@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List Your Business — Portago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C9A96E;--gold-light:#E8D5B0;--dark:#1A1A1A;--warm-dark:#2C2418;--cream:#FBF7F0;--warm-white:#FFFCF7;--sand:#F0E6D3;--terracotta:#C4703F;--text:#3D3427;--text-light:#8A7E6E;--radius:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;color:var(--text);background:var(--warm-white);-webkit-font-smoothing:antialiased}
+
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,252,247,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,110,0.15)}
+.logo{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--warm-dark);letter-spacing:-0.5px;text-decoration:none}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:32px;align-items:center}
+nav a{font-size:14px;font-weight:500;color:var(--text-light);text-decoration:none;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.3s}
+nav a:hover{color:var(--gold)}
+.nav-cta{background:var(--warm-dark);color:white !important;padding:10px 24px;border-radius:100px;font-size:13px !important;letter-spacing:0.8px;transition:all 0.3s !important}
+.nav-cta:hover{background:var(--gold) !important}
+
+.hero{margin-top:80px;padding:80px 40px;background:linear-gradient(135deg,var(--warm-dark) 0%,#3D2E1A 100%);text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.1) 0%,transparent 70%)}
+.hero .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;padding:8px 20px;border:1px solid rgba(201,169,110,0.3);border-radius:100px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);font-weight:700;color:white;line-height:1.15;margin-bottom:16px;position:relative}
+.hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero p{font-size:18px;color:rgba(255,255,255,0.65);line-height:1.7;max-width:560px;margin:0 auto;font-weight:300}
+
+.benefits{padding:80px 40px;background:var(--cream)}
+.benefits-inner{max-width:1100px;margin:0 auto}
+.benefits h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;color:var(--warm-dark);text-align:center;margin-bottom:12px}
+.benefits .sub{font-size:16px;color:var(--text-light);text-align:center;margin-bottom:48px;font-weight:300}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.benefit{background:white;border-radius:var(--radius);padding:36px;border:1px solid rgba(201,169,110,0.1);text-align:center;transition:all 0.3s}
+.benefit:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(44,36,24,0.08)}
+.benefit .num{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--gold);margin-bottom:12px}
+.benefit h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--warm-dark);margin-bottom:8px}
+.benefit p{font-size:14px;color:var(--text-light);line-height:1.7;font-weight:300}
+
+.how{padding:80px 40px;background:var(--warm-white)}
+.how-inner{max-width:900px;margin:0 auto;text-align:center}
+.how h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;color:var(--warm-dark);margin-bottom:48px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;position:relative}
+.steps::before{content:'';position:absolute;top:32px;left:15%;right:15%;height:2px;background:var(--sand)}
+.step{position:relative;z-index:2}
+.step-circle{width:64px;height:64px;border-radius:50%;background:var(--warm-dark);color:white;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin:0 auto 16px;border:4px solid var(--warm-white)}
+.step h3{font-size:16px;font-weight:600;color:var(--warm-dark);margin-bottom:6px}
+.step p{font-size:14px;color:var(--text-light);font-weight:300;line-height:1.6}
+
+.pricing{padding:80px 40px;background:var(--cream)}
+.pricing-inner{max-width:1000px;margin:0 auto;text-align:center}
+.pricing h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;color:var(--warm-dark);margin-bottom:12px}
+.pricing .sub{font-size:16px;color:var(--text-light);margin-bottom:48px;font-weight:300}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.price-card{background:white;border-radius:var(--radius);padding:40px 32px;border:1px solid rgba(201,169,110,0.1);text-align:center;position:relative;transition:all 0.3s}
+.price-card.featured{border:2px solid var(--gold);box-shadow:0 8px 40px rgba(201,169,110,0.15)}
+.price-card.featured::before{content:'Most Popular';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:white;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 16px;border-radius:100px}
+.price-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--warm-dark);margin-bottom:8px}
+.price-amount{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--warm-dark);margin-bottom:4px}
+.price-amount span{font-size:16px;font-weight:400;color:var(--text-light)}
+.price-period{font-size:13px;color:var(--text-light);margin-bottom:24px}
+.price-features{list-style:none;text-align:left;margin-bottom:28px}
+.price-features li{padding:8px 0;font-size:14px;color:var(--text);display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(240,230,211,0.4)}
+.price-features li:last-child{border-bottom:none}
+.price-features .check{color:var(--gold);font-weight:bold;flex-shrink:0}
+.price-features .cross{color:#ccc;flex-shrink:0}
+.price-btn{display:inline-block;width:100%;padding:14px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;text-align:center;transition:all 0.3s;font-family:'Inter',sans-serif;cursor:pointer;border:none}
+.price-btn-primary{background:var(--warm-dark);color:white}
+.price-btn-primary:hover{background:var(--gold)}
+.price-btn-secondary{background:white;color:var(--warm-dark);border:2px solid var(--sand)}
+.price-btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+
+.signup{padding:80px 40px;background:var(--warm-white)}
+.signup-inner{max-width:600px;margin:0 auto}
+.signup h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;color:var(--warm-dark);text-align:center;margin-bottom:8px}
+.signup .sub{font-size:16px;color:var(--text-light);text-align:center;margin-bottom:36px;font-weight:300}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--warm-dark);margin-bottom:6px;letter-spacing:0.5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:14px 18px;border:1px solid var(--sand);border-radius:12px;font-size:15px;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.3s;background:white}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{height:100px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.submit-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--gold) 0%,var(--terracotta) 100%);color:white;border:none;border-radius:100px;font-size:16px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.3s;margin-top:8px}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,169,110,0.3)}
+.form-note{font-size:12px;color:var(--text-light);text-align:center;margin-top:16px}
+
+footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px;text-align:center}
+footer .logo{color:white;font-size:20px}
+footer p{font-size:13px;margin-top:8px}
+
+@media(max-width:768px){
+  header{padding:16px 20px}
+  nav a:not(.nav-cta){display:none}
+  .benefits-grid,.pricing-grid,.steps{grid-template-columns:1fr}
+  .steps::before{display:none}
+  .form-row{grid-template-columns:1fr}
+  section,.hero,.benefits,.how,.pricing,.signup{padding:60px 20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">Portago<span>.</span></a>
+  <nav>
+    <a href="index.html">Discover</a>
+    <a href="area-guide.html">Areas</a>
+    <a href="category-page.html">Lifestyle</a>
+    <a href="search-results.html">Property</a>
+    <a href="blog-post.html">Blog</a>
+    <a href="ai-concierge.html">AI Concierge</a>
+    <a href="list-your-business.html" class="nav-cta">List Your Business</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="tag">For Business Owners</div>
+  <h1>Get your business in front of <em>Mallorca's</em> most discerning audience</h1>
+  <p>Join the island's premier lifestyle directory. Reach high-value international residents, property buyers, and visitors actively looking for quality services.</p>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="benefits-inner">
+    <h2>Why list on Portago?</h2>
+    <p class="sub">We're not another directory. We're where Mallorca's international community comes to discover the best the island has to offer.</p>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <div class="num">2,960+</div>
+        <h3>Curated Listings</h3>
+        <p>Your business sits alongside the island's best, in a directory that values quality over quantity.</p>
+      </div>
+      <div class="benefit">
+        <div class="num">85%</div>
+        <h3>International Audience</h3>
+        <p>Our visitors are affluent international residents and property buyers — not bargain-hunting tourists.</p>
+      </div>
+      <div class="benefit">
+        <div class="num">24/7</div>
+        <h3>AI-Powered Referrals</h3>
+        <p>Our AI Concierge actively recommends businesses to users based on their specific needs and preferences.</p>
+      </div>
+      <div class="benefit">
+        <div class="num">€5-15</div>
+        <h3>Per Qualified Lead</h3>
+        <p>Only pay for real enquiries from interested customers. No impressions, no clicks — just genuine leads.</p>
+      </div>
+      <div class="benefit">
+        <div class="num">12</div>
+        <h3>Area Guides</h3>
+        <p>Feature in comprehensive area guides that rank for high-intent search terms across Mallorca.</p>
+      </div>
+      <div class="benefit">
+        <div class="num">SEO</div>
+        <h3>Boost Your Visibility</h3>
+        <p>Your listing page is optimised for search engines and AI platforms — helping customers find you everywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="how-inner">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-circle">1</div>
+        <h3>Sign Up</h3>
+        <p>Fill in your business details below. Takes 2 minutes.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">2</div>
+        <h3>We Verify & Publish</h3>
+        <p>Our team reviews your listing and publishes it within 24 hours.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <h3>Start Getting Leads</h3>
+        <p>Customers find you through search, area guides, and AI recommendations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="pricing-inner">
+    <h2>Simple, transparent pricing</h2>
+    <p class="sub">Start free. Upgrade when you see the results.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Essential</div>
+        <div class="price-amount">Free</div>
+        <div class="price-period">Forever</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Basic listing with description</li>
+          <li><span class="check">✓</span> Address & contact details</li>
+          <li><span class="check">✓</span> Up to 3 photos</li>
+          <li><span class="check">✓</span> Customer reviews</li>
+          <li><span class="cross">—</span> Featured placement</li>
+          <li><span class="cross">—</span> AI Concierge priority</li>
+          <li><span class="cross">—</span> Lead tracking dashboard</li>
+          <li><span class="cross">—</span> Analytics & insights</li>
+        </ul>
+        <button class="price-btn price-btn-secondary" onclick="document.getElementById('signupForm').scrollIntoView({behavior:'smooth'})">Get Started Free</button>
+      </div>
+      <div class="price-card featured">
+        <div class="price-name">Premium</div>
+        <div class="price-amount">€49<span>/mo</span></div>
+        <div class="price-period">or €490/year (save 17%)</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Everything in Essential</li>
+          <li><span class="check">✓</span> Up to 12 photos + video</li>
+          <li><span class="check">✓</span> Featured in area guides</li>
+          <li><span class="check">✓</span> AI Concierge priority recommendations</li>
+          <li><span class="check">✓</span> Lead tracking dashboard</li>
+          <li><span class="check">✓</span> Monthly analytics report</li>
+          <li><span class="cross">—</span> Homepage featured placement</li>
+          <li><span class="cross">—</span> Dedicated account manager</li>
+        </ul>
+        <button class="price-btn price-btn-primary" onclick="document.getElementById('signupForm').scrollIntoView({behavior:'smooth'})">Start Free Trial →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Exclusive</div>
+        <div class="price-amount">€199<span>/mo</span></div>
+        <div class="price-period">or €1,990/year (save 17%)</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Everything in Premium</li>
+          <li><span class="check">✓</span> Unlimited photos + video</li>
+          <li><span class="check">✓</span> Homepage featured placement</li>
+          <li><span class="check">✓</span> Top of category & area results</li>
+          <li><span class="check">✓</span> AI Concierge top recommendation</li>
+          <li><span class="check">✓</span> Sponsored blog feature</li>
+          <li><span class="check">✓</span> Dedicated account manager</li>
+          <li><span class="check">✓</span> Quarterly performance review</li>
+        </ul>
+        <button class="price-btn price-btn-primary" onclick="document.getElementById('signupForm').scrollIntoView({behavior:'smooth'})">Contact Us →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNUP FORM -->
+<section class="signup" id="signupForm">
+  <div class="signup-inner">
+    <h2>Register your business</h2>
+    <p class="sub">Fill in the details below and we'll have your listing live within 24 hours.</p>
+    <form id="bizForm" onsubmit="submitBiz(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Business Name *</label>
+          <input type="text" id="biz-name" required placeholder="e.g. Restaurant La Paloma">
+        </div>
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="biz-category" required>
+            <option value="">Select category</option>
+            <option value="restaurants">Restaurants & Dining</option>
+            <option value="property">Property & Real Estate</option>
+            <option value="architecture">Architecture & Design</option>
+            <option value="wellness">Wellness & Health</option>
+            <option value="schools">Schools & Education</option>
+            <option value="marinas">Marinas & Boating</option>
+            <option value="legal">Legal & Professional</option>
+            <option value="home">Home & Garden</option>
+            <option value="activities">Activities & Experiences</option>
+            <option value="shopping">Shopping & Retail</option>
+            <option value="transport">Transport</option>
+            <option value="events">Events & Weddings</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Contact Name *</label>
+          <input type="text" id="biz-contact" required placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" id="biz-email" required placeholder="you@business.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" id="biz-phone" placeholder="+34 ...">
+        </div>
+        <div class="form-group">
+          <label>Website</label>
+          <input type="url" id="biz-website" placeholder="https://...">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Location / Area</label>
+        <input type="text" id="biz-location" placeholder="e.g. Palma, Sóller, Alaró...">
+      </div>
+      <div class="form-group">
+        <label>Tell us about your business</label>
+        <textarea id="biz-desc" placeholder="What makes your business special? What should customers know?"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Which plan interests you?</label>
+        <select id="biz-plan">
+          <option value="essential">Essential (Free)</option>
+          <option value="premium" selected>Premium (€49/mo)</option>
+          <option value="exclusive">Exclusive (€199/mo)</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">Submit Your Business →</button>
+      <p class="form-note">We'll review your submission and be in touch within 24 hours. No payment required to get started.</p>
+    </form>
+    <!-- Success -->
+    <div id="bizSuccess" style="display:none;text-align:center;padding:40px 0;">
+      <div style="font-size:48px;margin-bottom:16px;">🎉</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:28px;color:var(--warm-dark);margin-bottom:12px;">Application received!</h3>
+      <p style="font-size:16px;color:var(--text-light);line-height:1.7;max-width:400px;margin:0 auto;">Thank you for registering. Our team will review your details and have your listing live within 24 hours. We'll send a confirmation to your email.</p>
+      <a href="index.html" style="display:inline-block;margin-top:24px;padding:14px 32px;background:var(--warm-dark);color:white;border-radius:100px;text-decoration:none;font-size:15px;font-weight:600;">Back to Portago</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="logo">Portago<span>.</span></a>
+  <p>© 2026 Portago. All rights reserved.</p>
+</footer>
+
+<script>
+function submitBiz(e){
+  e.preventDefault();
+  const data={
+    business:document.getElementById('biz-name').value,
+    category:document.getElementById('biz-category').value,
+    contact:document.getElementById('biz-contact').value,
+    email:document.getElementById('biz-email').value,
+    phone:document.getElementById('biz-phone').value,
+    website:document.getElementById('biz-website').value,
+    location:document.getElementById('biz-location').value,
+    description:document.getElementById('biz-desc').value,
+    plan:document.getElementById('biz-plan').value,
+    timestamp:new Date().toISOString()
+  };
+  const existing=JSON.parse(localStorage.getItem('portago_businesses')||'[]');
+  existing.push(data);
+  localStorage.setItem('portago_businesses',JSON.stringify(existing));
+  document.getElementById('bizForm').style.display='none';
+  document.getElementById('bizSuccess').style.display='block';
+  document.querySelector('.signup h2').style.display='none';
+  document.querySelector('.signup .sub').style.display='none';
+  console.log('Business signup:',data);
+}
+</script>
+</body>
+</html>
