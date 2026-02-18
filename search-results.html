@@ -155,6 +155,10 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
 
   <div class="results-info">Showing <strong>67</strong> results for "<strong>restaurants palma</strong>"</div>
 
+  <div id="mapView" class="map-toggle-view">
+    <div id="map" style="width:100%;height:100%;border-radius:16px"></div>
+  </div>
+
   <div class="results-grid">
     <a href="listing-page.html" class="result-card">
       <div class="result-img">
@@ -286,5 +290,47 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
 </footer>
 
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  const btns = document.querySelectorAll('.view-btn');
+  const grid = document.querySelector('.results-grid');
+  const mapDiv = document.getElementById('mapView');
+  const pagination = document.querySelector('.pagination');
+  let map;
+  const pins = [
+    {name:'Zaranda — Es Princep',lat:39.5696,lng:2.6462,rating:'4.9',price:'€€€€'},
+    {name:'Marc Fosh',lat:39.5713,lng:2.6503,rating:'4.8',price:'€€€'},
+    {name:'DINS Santi Taura',lat:39.5732,lng:2.6492,rating:'4.9',price:'€€€€'},
+    {name:'Aromata',lat:39.5708,lng:2.6485,rating:'4.7',price:'€€€'},
+    {name:'Adrián Quetglas',lat:39.5752,lng:2.6518,rating:'4.5',price:'€€'},
+    {name:'Forn de Sant Joan',lat:39.5675,lng:2.6498,rating:'4.6',price:'€'},
+    {name:'Naan Street Food',lat:39.5748,lng:2.6445,rating:'4.4',price:'€€€'},
+    {name:'La Bóveda',lat:39.5682,lng:2.6472,rating:'4.7',price:'€€€'},
+    {name:'Tast Club',lat:39.5720,lng:2.6480,rating:'4.5',price:'€€'}
+  ];
+
+  btns.forEach(btn => btn.addEventListener('click', function(){
+    btns.forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    const isMap = this.textContent.includes('Map');
+    grid.style.display = isMap ? 'none' : '';
+    pagination.style.display = isMap ? 'none' : '';
+    mapDiv.style.display = isMap ? 'flex' : 'none';
+    if(isMap && !map){
+      map = L.map('map').setView([39.5715, 2.6490], 15);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+        attribution:'© OpenStreetMap © CARTO', maxZoom:19
+      }).addTo(map);
+      pins.forEach(p => {
+        L.marker([p.lat, p.lng]).addTo(map)
+          .bindPopup('<strong>'+p.name+'</strong><br>'+p.rating+' · '+p.price);
+      });
+      setTimeout(()=>map.invalidateSize(),100);
+    }
+  }));
+})();
+</script>
 </body>
 </html>
