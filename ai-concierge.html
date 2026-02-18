@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Concierge — Your Personal Mallorca Assistant | Portago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C9A96E;--gold-light:#E8D5B0;--dark:#1A1A1A;--warm-dark:#2C2418;--cream:#FBF7F0;--warm-white:#FFFCF7;--sand:#F0E6D3;--terracotta:#C4703F;--olive:#6B7B4E;--sea:#4A7C8A;--text:#3D3427;--text-light:#8A7E6E;--radius:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;color:var(--text);background:var(--warm-white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,252,247,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,110,0.15)}
+.logo{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--warm-dark);letter-spacing:-0.5px;text-decoration:none}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:32px;align-items:center}
+nav a{font-size:14px;font-weight:500;color:var(--text-light);text-decoration:none;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.3s}
+nav a:hover{color:var(--gold)}
+.nav-cta{background:var(--warm-dark);color:white !important;padding:10px 24px;border-radius:100px;font-size:13px !important;letter-spacing:0.8px;transition:all 0.3s !important}
+.nav-cta:hover{background:var(--gold) !important}
+
+/* === HERO === */
+.ai-hero{margin-top:80px;min-height:90vh;display:flex;align-items:center;background:linear-gradient(135deg,#1A1A2E 0%,#16213E 50%,#0F3460 100%);position:relative;overflow:hidden;padding:80px 40px}
+.ai-hero::before{content:'';position:absolute;top:-50%;right:-20%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.08) 0%,transparent 70%);pointer-events:none}
+.ai-hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(74,124,138,0.06) 0%,transparent 70%);pointer-events:none}
+.ai-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+.ai-hero-content .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;padding:8px 20px;border:1px solid rgba(201,169,110,0.3);border-radius:100px}
+.ai-hero-content .tag .pulse{width:8px;height:8px;border-radius:50%;background:#4ADE80;box-shadow:0 0 8px rgba(74,222,128,0.5);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.ai-hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,56px);font-weight:700;color:white;line-height:1.15;margin-bottom:20px}
+.ai-hero h1 em{font-style:italic;color:var(--gold-light)}
+.ai-hero .subtitle{font-size:18px;color:rgba(255,255,255,0.65);line-height:1.8;font-weight:300;margin-bottom:36px;max-width:500px}
+.hero-cta-row{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.cta-primary{display:inline-block;background:linear-gradient(135deg,var(--gold) 0%,var(--terracotta) 100%);color:white;padding:16px 36px;border-radius:100px;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s;letter-spacing:0.3px;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,169,110,0.3)}
+.cta-secondary{font-size:15px;color:var(--gold-light);text-decoration:none;font-weight:500;transition:color 0.3s}
+.cta-secondary:hover{color:white}
+.hero-proof{margin-top:32px;display:flex;gap:24px;font-size:13px;color:rgba(255,255,255,0.45)}
+.hero-proof span{display:flex;align-items:center;gap:6px}
+
+/* Chat Demo */
+.chat-demo{display:flex;justify-content:center}
+.chat-window{background:white;border-radius:24px;width:100%;max-width:440px;box-shadow:0 25px 80px rgba(0,0,0,0.35);overflow:hidden}
+.chat-header{background:var(--warm-dark);padding:18px 24px;display:flex;align-items:center;gap:12px}
+.chat-dot{width:10px;height:10px;border-radius:50%;background:#4ADE80;box-shadow:0 0 8px rgba(74,222,128,0.5)}
+.chat-header span{font-size:15px;font-weight:600;color:white}
+.chat-header .status{font-size:11px;color:rgba(255,255,255,0.5);margin-left:auto}
+.chat-body{padding:16px;max-height:400px;overflow-y:auto}
+.msg{margin-bottom:12px;padding:14px 18px;border-radius:18px;font-size:14px;line-height:1.6;max-width:88%}
+.msg-user{background:var(--sand);color:var(--text);margin-left:auto;border-bottom-right-radius:4px}
+.msg-bot{background:#F0F4F8;color:var(--text);border-bottom-left-radius:4px}
+.msg-bot strong{color:var(--warm-dark)}
+.chat-input{display:flex;padding:12px 16px;border-top:1px solid #eee;gap:10px}
+.chat-input input{flex:1;border:1px solid var(--sand);border-radius:100px;padding:10px 18px;font-size:14px;font-family:'Inter',sans-serif;outline:none}
+.chat-input input:focus{border-color:var(--gold)}
+.chat-input button{background:var(--gold);color:white;border:none;width:40px;height:40px;border-radius:50%;font-size:16px;cursor:pointer;transition:all 0.3s}
+.chat-input button:hover{background:var(--terracotta)}
+
+/* === CAPABILITIES === */
+.capabilities{padding:100px 40px;background:var(--cream)}
+.cap-header{text-align:center;max-width:680px;margin:0 auto 64px}
+.section-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,44px);font-weight:600;color:var(--warm-dark);line-height:1.2;margin-bottom:16px}
+.section-sub{font-size:17px;color:var(--text-light);line-height:1.7;font-weight:300}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:0 auto}
+.cap-card{background:white;border-radius:var(--radius);padding:36px;border:1px solid rgba(201,169,110,0.1);box-shadow:0 2px 20px rgba(44,36,24,0.04);transition:all 0.4s}
+.cap-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(44,36,24,0.1);border-color:rgba(201,169,110,0.25)}
+.cap-icon{font-size:36px;margin-bottom:20px}
+.cap-card h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--warm-dark);margin-bottom:10px}
+.cap-card p{font-size:14px;color:var(--text-light);line-height:1.7;font-weight:300;margin-bottom:14px}
+.cap-example{font-size:13px;color:var(--text);font-style:italic;padding:12px 16px;background:var(--cream);border-radius:10px;border-left:3px solid var(--gold-light);line-height:1.5}
+
+/* === HOW IT WORKS === */
+.how-it-works{padding:100px 40px;background:var(--warm-white)}
+.how-header{text-align:center;max-width:600px;margin:0 auto 64px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1000px;margin:0 auto;position:relative}
+.steps::before{content:'';position:absolute;top:36px;left:15%;right:15%;height:2px;background:var(--sand)}
+.step{text-align:center;position:relative;z-index:2}
+.step-num{width:72px;height:72px;border-radius:50%;background:var(--warm-dark);color:white;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin:0 auto 20px;border:4px solid var(--warm-white)}
+.step h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--warm-dark);margin-bottom:8px}
+.step p{font-size:14px;color:var(--text-light);line-height:1.7;font-weight:300;max-width:260px;margin:0 auto}
+
+/* === PRICING === */
+.pricing{padding:100px 40px;background:var(--cream)}
+.pricing-header{text-align:center;max-width:600px;margin:0 auto 64px}
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:800px;margin:0 auto}
+.price-card{background:white;border-radius:var(--radius);padding:44px;border:1px solid rgba(201,169,110,0.1);box-shadow:0 2px 20px rgba(44,36,24,0.04);text-align:center;position:relative;transition:all 0.3s}
+.price-card.featured{border:2px solid var(--gold);box-shadow:0 8px 40px rgba(201,169,110,0.15)}
+.price-card.featured::before{content:'Most Popular';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:white;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 16px;border-radius:100px}
+.price-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:var(--warm-dark);margin-bottom:8px}
+.price-amount{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--warm-dark);margin-bottom:4px}
+.price-amount span{font-size:16px;font-weight:400;color:var(--text-light)}
+.price-period{font-size:14px;color:var(--text-light);margin-bottom:28px}
+.price-features{list-style:none;text-align:left;margin-bottom:32px}
+.price-features li{padding:10px 0;font-size:14px;color:var(--text);display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(240,230,211,0.4)}
+.price-features li:last-child{border-bottom:none}
+.check{color:var(--olive);font-weight:bold}
+.cross{color:#ccc}
+.price-btn{display:inline-block;width:100%;padding:14px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;text-align:center;transition:all 0.3s;font-family:'Inter',sans-serif;cursor:pointer;border:none}
+.price-btn-primary{background:var(--warm-dark);color:white}
+.price-btn-primary:hover{background:var(--gold)}
+.price-btn-secondary{background:white;color:var(--warm-dark);border:2px solid var(--sand)}
+.price-btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+
+/* === TESTIMONIALS === */
+.testimonials{padding:100px 40px;background:var(--warm-white)}
+.test-header{text-align:center;max-width:600px;margin:0 auto 64px}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:0 auto}
+.test-card{background:white;border-radius:var(--radius);padding:32px;border:1px solid rgba(201,169,110,0.1);box-shadow:0 2px 12px rgba(44,36,24,0.04)}
+.test-stars{color:var(--gold);font-size:16px;margin-bottom:16px;letter-spacing:2px}
+.test-card blockquote{font-size:15px;line-height:1.7;color:var(--text);font-weight:300;font-style:normal;margin-bottom:20px}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-avatar{width:44px;height:44px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;color:var(--text-light)}
+.test-name{font-weight:600;font-size:14px;color:var(--warm-dark)}
+.test-detail{font-size:12px;color:var(--text-light)}
+
+/* === FAQ === */
+.faq{padding:100px 40px;background:var(--cream)}
+.faq-header{text-align:center;max-width:600px;margin:0 auto 64px}
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{background:white;border-radius:14px;margin-bottom:12px;border:1px solid rgba(201,169,110,0.1);overflow:hidden}
+.faq-q{padding:20px 28px;font-size:16px;font-weight:600;color:var(--warm-dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color 0.3s}
+.faq-q:hover{color:var(--gold)}
+.faq-q::after{content:'+';font-size:22px;color:var(--gold);font-weight:300;transition:transform 0.3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{padding:0 28px 20px;font-size:15px;color:var(--text-light);line-height:1.7;font-weight:300;display:none}
+.faq-item.open .faq-a{display:block}
+
+/* === FINAL CTA === */
+.final-cta{padding:120px 40px;background:linear-gradient(135deg,var(--warm-dark) 0%,#3D2E1A 100%);text-align:center}
+.final-cta h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,48px);font-weight:700;color:white;margin-bottom:16px;line-height:1.2}
+.final-cta p{font-size:18px;color:rgba(255,255,255,0.6);font-weight:300;max-width:560px;margin:0 auto 36px;line-height:1.7}
+
+footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.footer-inner .logo{font-size:24px;color:white}
+.footer-inner p{font-size:13px}
+
+@media(max-width:768px){
+  header{padding:16px 20px}
+  nav a:not(.nav-cta){display:none}
+  .ai-hero{padding:60px 20px}
+  .ai-hero-inner{grid-template-columns:1fr;gap:48px}
+  .cap-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:32px}
+  .steps::before{display:none}
+  .pricing-grid{grid-template-columns:1fr}
+  .test-grid{grid-template-columns:1fr}
+  .hero-cta-row{flex-direction:column;align-items:flex-start}
+  .hero-proof{flex-direction:column;gap:8px}
+  section,.capabilities,.how-it-works,.pricing,.testimonials,.faq,.final-cta{padding:60px 20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="homepage.html" class="logo">Portago<span>.</span></a>
+  <nav>
+    <a href="#">Discover</a>
+    <a href="area-guide.html">Areas</a>
+    <a href="#">Lifestyle</a>
+    <a href="blog-post.html">Blog</a>
+    <a href="#" class="nav-cta">List Your Business</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="ai-hero">
+  <div class="ai-hero-inner">
+    <div class="ai-hero-content">
+      <div class="tag"><span class="pulse"></span> AI-Powered</div>
+      <h1>Your personal <em>Mallorca</em> concierge, available 24/7</h1>
+      <p class="subtitle">Ask anything about life on the island — restaurant recommendations, property advice, school comparisons, legal guidance, event planning — and get instant, personalised answers from an AI that knows Mallorca inside out.</p>
+      <div class="hero-cta-row">
+        <a href="#" class="cta-primary">Try the Concierge Free →</a>
+        <a href="#pricing" class="cta-secondary">See pricing</a>
+      </div>
+      <div class="hero-proof">
+        <span>✓ No signup required for free tier</span>
+        <span>✓ 2,400+ businesses indexed</span>
+        <span>✓ Updated daily</span>
+      </div>
+    </div>
+    <div class="chat-demo">
+      <div class="chat-window">
+        <div class="chat-header">
+          <div class="chat-dot"></div>
+          <span>Portago AI Concierge</span>
+          <span class="status">Online</span>
+        </div>
+        <div class="chat-body">
+          <div class="msg msg-user">We're moving to Mallorca with two kids (8 & 12). Best areas for families with international schools nearby?</div>
+          <div class="msg msg-bot"><strong>Great question!</strong> For families with school-age children, I'd recommend:<br><br>🏡 <strong>Palma & surrounds</strong> — Closest to most international schools (Baleares Int'l, Agora Portals, Bellver). Urban lifestyle with everything on your doorstep.<br><br>🌿 <strong>Calvià / Santa Ponsa</strong> — Close to Agora Portals and King Richard III. More space, great outdoor lifestyle.<br><br>⛰️ <strong>Alaró / Binissalem</strong> — Village life at its best. 25 min to Palma schools. Amazing community feel.<br><br>Want me to compare property prices across these areas?</div>
+          <div class="msg msg-user">Yes please! Budget around €800k for a 4-bed house.</div>
+        </div>
+        <div class="chat-input">
+          <input type="text" placeholder="Ask me anything about Mallorca...">
+          <button>→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="capabilities">
+  <div class="cap-header">
+    <div class="section-tag">What It Can Do</div>
+    <h2 class="section-title">One AI. Unlimited island knowledge.</h2>
+    <p class="section-sub">From finding the perfect sunset restaurant to navigating Spanish tax residency — the Portago Concierge handles it all.</p>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-card">
+      <div class="cap-icon">🍽️</div>
+      <h3>Restaurant Finder</h3>
+      <p>Discover restaurants by cuisine, vibe, budget, location, or occasion. Real reviews, real recommendations — not generic lists.</p>
+      <div class="cap-example">"Find a romantic dinner spot in Deià with a terrace and sea views, under €80 per person"</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon">🏡</div>
+      <h3>Property Advice</h3>
+      <p>Compare areas, understand price trends, find agents, and get buying advice tailored to your situation — budget, family, lifestyle.</p>
+      <div class="cap-example">"Compare Alaró vs Sóller for a family with young kids. €800k budget, want village life."</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon">🎓</div>
+      <h3>School Comparisons</h3>
+      <p>Compare international schools by curriculum (IB, British, German), fees, languages, extracurriculars, and parent reviews.</p>
+      <div class="cap-example">"Which international schools near Palma offer the IB programme? What are the fees?"</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon">⚖️</div>
+      <h3>Legal & Tax Guidance</h3>
+      <p>Navigate NIE applications, tax residency, property purchase processes, and administrative requirements with clear, step-by-step guidance.</p>
+      <div class="cap-example">"What do I need to register as a tax resident in Spain? Walk me through the process."</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon">🗓️</div>
+      <h3>Event & Itinerary Planning</h3>
+      <p>Plan weekends, guest itineraries, special occasions, and seasonal activities. Local insights, not tourist traps.</p>
+      <div class="cap-example">"Plan a weekend for friends visiting in March — outdoor activities, good food, some culture."</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon">🏗️</div>
+      <h3>Construction & Renovation</h3>
+      <p>Get advice on permits, architects, builders, budgets, timelines, and the unique challenges of building in Mallorca.</p>
+      <div class="cap-example">"I want to renovate a finca near Alaró — what permits do I need and what should I budget?"</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon">✈️</div>
+      <h3>Relocation Help</h3>
+      <p>Moving to Mallorca? Get a complete roadmap — from choosing an area to setting up utilities, healthcare, and banking.</p>
+      <div class="cap-example">"We're relocating from London. What's the full checklist for moving to Mallorca with kids?"</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon">🧘</div>
+      <h3>Wellness & Lifestyle</h3>
+      <p>Find yoga studios, personal trainers, clinics, spas, and wellness retreats. Recommendations based on your preferences.</p>
+      <div class="cap-example">"I'm looking for a good Pilates studio in Santa Catalina with morning classes."</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon">⛵</div>
+      <h3>Leisure & Activities</h3>
+      <p>Sailing, hiking, cycling, golf, diving — discover the best of Mallorca's outdoor lifestyle with local insider knowledge.</p>
+      <div class="cap-example">"Best sailing charter companies for a day trip to Cabrera with family?"</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+  <div class="how-header">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">Three steps to better answers</h2>
+    <p class="section-sub">No app to download. No account required for basic questions.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Ask anything</h3>
+      <p>Type your question in natural language — just like texting a knowledgeable friend who lives on the island.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Get personalised answers</h3>
+      <p>The AI searches 2,400+ verified listings, reviews, and local data to craft a tailored response.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Take action</h3>
+      <p>Click through to listings, make reservations, save recommendations, or keep the conversation going.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-header">
+    <div class="section-tag">Pricing</div>
+    <h2 class="section-title">Start free, upgrade when you're ready</h2>
+    <p class="section-sub">Basic questions are always free. Premium unlocks the full power of your personal island concierge.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-name">Explorer</div>
+      <div class="price-amount">Free</div>
+      <div class="price-period">Forever</div>
+      <ul class="price-features">
+        <li><span class="check">✓</span> 10 questions per month</li>
+        <li><span class="check">✓</span> Restaurant recommendations</li>
+        <li><span class="check">✓</span> Basic area information</li>
+        <li><span class="check">✓</span> Access to all listing data</li>
+        <li><span class="cross">—</span> Personalised advice</li>
+        <li><span class="cross">—</span> Legal & tax guidance</li>
+        <li><span class="cross">—</span> Property comparisons</li>
+        <li><span class="cross">—</span> Priority response time</li>
+      </ul>
+      <button class="price-btn price-btn-secondary">Get Started Free</button>
+    </div>
+    <div class="price-card featured">
+      <div class="price-name">Resident</div>
+      <div class="price-amount">€19<span>/mo</span></div>
+      <div class="price-period">Cancel anytime</div>
+      <ul class="price-features">
+        <li><span class="check">✓</span> Unlimited questions</li>
+        <li><span class="check">✓</span> All restaurant & lifestyle recs</li>
+        <li><span class="check">✓</span> Deep area comparisons</li>
+        <li><span class="check">✓</span> School & education advice</li>
+        <li><span class="check">✓</span> Legal & tax step-by-step guidance</li>
+        <li><span class="check">✓</span> Property market insights</li>
+        <li><span class="check">✓</span> Construction & renovation advice</li>
+        <li><span class="check">✓</span> Priority response • Saved history</li>
+      </ul>
+      <button class="price-btn price-btn-primary">Start 7-Day Free Trial</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-header">
+    <div class="section-tag">What People Say</div>
+    <h2 class="section-title">Trusted by Mallorca's expat community</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <blockquote>This saved us weeks of research when we were house-hunting. The AI compared three areas we were considering, factored in school proximity, and even estimated renovation budgets. Incredible tool.</blockquote>
+      <div class="test-author">
+        <div class="test-avatar">JR</div>
+        <div><div class="test-name">James & Rachel T.</div><div class="test-detail">Moved from London, now in Alaró</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <blockquote>I use it every week for restaurant recommendations. It actually learns my preferences — it knows I love natural wine, terrace dining, and hate tourist spots. It's like having a local friend on speed dial.</blockquote>
+      <div class="test-author">
+        <div class="test-avatar">SH</div>
+        <div><div class="test-name">Sophie H.</div><div class="test-detail">Palma resident, 2 years</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <blockquote>The legal and tax guidance alone is worth the subscription. It walked me through the entire NIE and residency process step by step, told me which gestoría to use, and what documents to prepare. Flawless.</blockquote>
+      <div class="test-author">
+        <div class="test-avatar">MK</div>
+        <div><div class="test-name">Marcus K.</div><div class="test-detail">German entrepreneur, Santa Catalina</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-header">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">Frequently asked questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does the AI Concierge work?</div>
+      <div class="faq-a">The Portago AI Concierge is powered by advanced language AI trained on our comprehensive database of 2,400+ Mallorca businesses, local knowledge, and expert-verified information. It understands natural language questions and provides personalised, contextual answers — not generic search results.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is the information accurate and up to date?</div>
+      <div class="faq-a">Yes. Our database is updated daily with the latest business information, opening hours, reviews, and pricing. For legal and tax guidance, we partner with local professionals to ensure accuracy. However, we always recommend confirming critical details (especially legal/financial) with a qualified professional.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I use it before moving to Mallorca?</div>
+      <div class="faq-a">Absolutely — that's one of the most popular use cases. Many users start with the Concierge months before their move, using it to research areas, compare schools, understand the property market, and plan their relocation step by step.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's the difference between free and premium?</div>
+      <div class="faq-a">The free Explorer tier gives you 10 questions per month, covering restaurants and basic area info. The Resident tier (€19/mo) unlocks unlimited questions plus deep property analysis, school comparisons, legal/tax guidance, construction advice, and personalised recommendations that learn your preferences over time.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can it replace a real estate agent or lawyer?</div>
+      <div class="faq-a">No — and it's not designed to. The AI Concierge is a research and guidance tool that helps you make more informed decisions and ask better questions. For transactions, contracts, and official filings, we always recommend working with qualified local professionals (and we can recommend the right ones).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is my data private?</div>
+      <div class="faq-a">Yes. We don't share your conversations or personal data with third parties. Your chat history (for premium users) is encrypted and only used to improve your personal recommendations. You can delete your data at any time.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Ready to discover Mallorca<br>like a local?</h2>
+  <p>Join thousands of residents and future residents who use the Portago AI Concierge to navigate island life with confidence.</p>
+  <a href="#" class="cta-primary">Try the Concierge Free →</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="homepage.html" class="logo">Portago<span>.</span></a>
+    <p>© 2026 Portago. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
