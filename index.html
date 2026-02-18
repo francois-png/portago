@@ -1161,5 +1161,202 @@ footer a:hover { color: var(--gold); }
 </footer>
 
 
+<!-- PORTAGO CHAT WIDGET -->
+<style>
+.pc-bubble{position:fixed;bottom:28px;right:28px;width:60px;height:60px;border-radius:50%;background:#C9A96E;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.25);z-index:9999;transition:transform .2s}
+.pc-bubble:hover{transform:scale(1.08)}
+.pc-bubble svg{width:28px;height:28px;color:#fff}
+.pc-window{position:fixed;bottom:100px;right:28px;width:380px;max-height:520px;background:#FAF7F2;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.18);z-index:9999;display:none;flex-direction:column;overflow:hidden;font-family:Inter,sans-serif}
+.pc-window.open{display:flex}
+.pc-header{background:#0A0F1C;color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px}
+.pc-header-dot{width:10px;height:10px;background:#C9A96E;border-radius:50%;animation:pc-pulse 2s infinite}
+@keyframes pc-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pc-header-text{flex:1}
+.pc-header-text h4{margin:0;font-size:14px;font-family:'Playfair Display',serif}
+.pc-header-text span{font-size:11px;opacity:.6}
+.pc-close{cursor:pointer;opacity:.6;font-size:18px}
+.pc-close:hover{opacity:1}
+.pc-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:280px}
+.pc-msg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.5}
+.pc-msg.bot{background:#fff;border:1px solid #e8e2d8;align-self:flex-start;border-bottom-left-radius:4px}
+.pc-msg.user{background:#0A0F1C;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.pc-options{display:flex;flex-direction:column;gap:6px;padding:0 16px 12px}
+.pc-opt{background:#fff;border:1px solid #C9A96E;color:#0A0F1C;padding:10px 14px;border-radius:10px;cursor:pointer;font-size:13px;text-align:left;transition:all .2s;font-family:Inter,sans-serif}
+.pc-opt:hover{background:#C9A96E;color:#fff}
+.pc-input-row{display:flex;border-top:1px solid #e8e2d8;display:none}
+.pc-input-row.show{display:flex}
+.pc-input-row input{flex:1;border:none;padding:14px 16px;font-size:13px;background:transparent;outline:none;font-family:Inter,sans-serif}
+.pc-input-row button{background:#C9A96E;color:#fff;border:none;padding:14px 18px;cursor:pointer;font-size:13px;font-family:Inter,sans-serif}
+@media(max-width:480px){.pc-window{right:12px;left:12px;width:auto;bottom:90px;max-height:70vh}}
+</style>
+
+<div class="pc-bubble" id="pcBubble" onclick="pcToggle()">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</div>
+
+<div class="pc-window" id="pcWindow">
+  <div class="pc-header">
+    <div class="pc-header-dot"></div>
+    <div class="pc-header-text">
+      <h4>Portago Concierge</h4>
+      <span>Typically replies instantly</span>
+    </div>
+    <span class="pc-close" onclick="pcToggle()">&#10005;</span>
+  </div>
+  <div class="pc-messages" id="pcMsgs"></div>
+  <div class="pc-options" id="pcOpts"></div>
+  <div class="pc-input-row" id="pcInputRow">
+    <input type="text" id="pcInput" placeholder="Type your answer..." onkeydown="if(event.key==='Enter')pcSendInput()">
+    <button onclick="pcSendInput()">Send</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var open=false, msgs=document.getElementById('pcMsgs'), opts=document.getElementById('pcOpts'), inputRow=document.getElementById('pcInputRow'), input=document.getElementById('pcInput');
+  var collecting={}, flow='';
+
+  window.pcToggle=function(){
+    open=!open;
+    document.getElementById('pcWindow').classList.toggle('open',open);
+    if(open && msgs.children.length===0) startChat();
+  };
+
+  function addMsg(text,who){
+    var d=document.createElement('div');
+    d.className='pc-msg '+who;
+    d.innerHTML=text;
+    msgs.appendChild(d);
+    msgs.scrollTop=msgs.scrollHeight;
+  }
+
+  function showOpts(options){
+    opts.innerHTML='';
+    options.forEach(function(o){
+      var b=document.createElement('button');
+      b.className='pc-opt';
+      b.textContent=o.label;
+      b.onclick=function(){o.action();};
+      opts.appendChild(b);
+    });
+  }
+
+  function clearOpts(){opts.innerHTML='';}
+  function showInput(ph){inputRow.classList.add('show');input.placeholder=ph||'Type here...';input.focus();}
+  function hideInput(){inputRow.classList.remove('show');}
+
+  window.pcSendInput=function(){
+    var v=input.value.trim();
+    if(!v)return;
+    addMsg(v,'user');
+    input.value='';
+    if(flow==='waitlist_email'){
+      hideInput();clearOpts();
+      setTimeout(function(){
+        addMsg("You're on the list! We'll notify you as soon as the AI Concierge launches. Welcome to Portago.","bot");
+        setTimeout(function(){
+          showOpts([{label:'Start over',action:startChat}]);
+        },500);
+      },800);
+    } else if(flow==='biz_name'){
+      collecting.name=v;
+      flow='biz_contact';
+      setTimeout(function(){addMsg("Great! And your name?","bot");},400);
+    } else if(flow==='biz_contact'){
+      collecting.contact=v;
+      flow='biz_email';
+      setTimeout(function(){addMsg("What's the best email to reach you?","bot");},400);
+    } else if(flow==='biz_email'){
+      collecting.email=v;
+      flow='biz_category';
+      hideInput();
+      setTimeout(function(){
+        addMsg("What type of business are you?","bot");
+        showOpts([
+          {label:'Restaurant / Bar',action:function(){bizCat('Restaurant')}},
+          {label:'Property / Architecture',action:function(){bizCat('Property')}},
+          {label:'Wellness / Health',action:function(){bizCat('Wellness')}},
+          {label:'Other',action:function(){bizCat('Other')}}
+        ]);
+      },400);
+    }
+  };
+
+  function bizCat(cat){
+    collecting.category=cat;
+    addMsg(cat,'user');clearOpts();
+    setTimeout(function(){
+      addMsg("Perfect! <strong>"+collecting.name+"</strong> is now on our list. We'll be in touch shortly to get you set up — completely free.","bot");
+      addMsg("Welcome to Portago!","bot");
+      setTimeout(function(){
+        showOpts([{label:'Start over',action:startChat}]);
+      },500);
+    },600);
+  }
+
+  function startChat(){
+    msgs.innerHTML='';clearOpts();hideInput();collecting={};flow='';
+    setTimeout(function(){
+      addMsg("Welcome to Portago — your guide to the best of Mallorca. How can I help?","bot");
+      setTimeout(function(){
+        showOpts([
+          {label:"I'm looking for something in Mallorca",action:visitorFlow},
+          {label:"I'd like to list my business",action:bizFlow},
+          {label:"Tell me about Portago",action:aboutFlow}
+        ]);
+      },400);
+    },300);
+  }
+
+  function visitorFlow(){
+    addMsg("I'm looking for something in Mallorca","user");clearOpts();
+    setTimeout(function(){
+      addMsg("We're building Mallorca's most comprehensive lifestyle directory — with an AI concierge that gives personalised recommendations.","bot");
+      setTimeout(function(){
+        addMsg("Join our waitlist and be the first to try it. What's your email?","bot");
+        flow='waitlist_email';
+        showInput('Your email address');
+      },600);
+    },500);
+  }
+
+  function bizFlow(){
+    addMsg("I'd like to list my business","user");clearOpts();
+    setTimeout(function(){
+      addMsg("Brilliant! Listing on Portago is completely free. You'll be discoverable to thousands of residents and visitors across Mallorca.","bot");
+      setTimeout(function(){
+        addMsg("Let's get you started — what's your business name?","bot");
+        flow='biz_name';
+        showInput('Your business name');
+      },600);
+    },500);
+  }
+
+  function aboutFlow(){
+    addMsg("Tell me about Portago","user");clearOpts();
+    setTimeout(function(){
+      addMsg("Portago is the definitive lifestyle directory for Mallorca. We curate the best restaurants, services, wellness, property, and more — all in one beautiful place.","bot");
+      setTimeout(function(){
+        addMsg("Our AI Concierge (launching soon) will give you personalised recommendations based on your preferences.","bot");
+        setTimeout(function(){
+          showOpts([
+            {label:"Join the waitlist",action:visitorFlow},
+            {label:"List my business",action:bizFlow}
+          ]);
+        },500);
+      },800);
+    },500);
+  }
+
+  // Auto-open after 8 seconds on first visit
+  setTimeout(function(){
+    if(!open && !sessionStorage.getItem('pc_seen')){
+      pcToggle();
+      sessionStorage.setItem('pc_seen','1');
+    }
+  },8000);
+})();
+</script>
+
 </body>
 </html>
