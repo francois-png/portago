@@ -30,7 +30,7 @@ nav a:hover{color:var(--gold)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
 .ai-hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,56px);font-weight:700;color:white;line-height:1.15;margin-bottom:20px}
 .ai-hero h1 em{font-style:italic;color:var(--gold-light)}
-.ai-hero .subtitle{font-size:18px;color:rgba(255,255,255,0.65);line-height:1.8;font-weight:300;margin-bottom:36px;max-width:500px}
+.ai-hero .subtitle{font-size:18px;color:rgba(255,255,255,0.65);line-height:1.8;font-weight:300;margin-bottom:36px;max-width:520px}
 .hero-cta-row{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
 .cta-primary{display:inline-block;background:linear-gradient(135deg,var(--gold) 0%,var(--terracotta) 100%);color:white;padding:16px 36px;border-radius:100px;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s;letter-spacing:0.3px;border:none;cursor:pointer;font-family:'Inter',sans-serif}
 .cta-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,169,110,0.3)}
@@ -57,12 +57,54 @@ nav a:hover{color:var(--gold)}
 .chat-input button{background:var(--gold);color:white;border:none;width:40px;height:40px;border-radius:50%;font-size:16px;cursor:pointer;transition:all 0.3s}
 .chat-input button:hover{background:var(--terracotta)}
 
-/* === CAPABILITIES === */
-.capabilities{padding:100px 40px;background:var(--cream)}
-.cap-header{text-align:center;max-width:680px;margin:0 auto 64px}
+/* === WHAT PORTAGO KNOWS === */
+.knows{padding:100px 40px;background:var(--warm-white)}
+.knows-inner{max-width:1100px;margin:0 auto}
+.knows-header{text-align:center;max-width:700px;margin:0 auto 56px}
 .section-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 .section-title{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,44px);font-weight:600;color:var(--warm-dark);line-height:1.2;margin-bottom:16px}
 .section-sub{font-size:17px;color:var(--text-light);line-height:1.7;font-weight:300}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:56px}
+.stat-box{text-align:center;padding:36px 20px;background:var(--cream);border-radius:var(--radius);border:1px solid rgba(201,169,110,0.12)}
+.stat-num{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,52px);font-weight:700;color:var(--warm-dark);line-height:1}
+.stat-num .gold{color:var(--gold)}
+.stat-label{font-size:14px;color:var(--text-light);margin-top:8px;font-weight:400;line-height:1.5}
+.cat-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.cat-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--cream);border:1px solid rgba(201,169,110,0.15);border-radius:100px;font-size:13px;font-weight:500;color:var(--text);transition:all 0.3s}
+.cat-pill:hover{border-color:var(--gold);color:var(--gold)}
+.cat-pill svg{width:16px;height:16px;color:var(--gold);flex-shrink:0}
+
+/* === HOW IT WORKS === */
+.how-it-works{padding:100px 40px;background:var(--cream)}
+.how-header{text-align:center;max-width:660px;margin:0 auto 64px}
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1100px;margin:0 auto;position:relative}
+.journey::before{content:'';position:absolute;top:40px;left:12%;right:12%;height:2px;background:var(--sand)}
+.j-step{text-align:center;position:relative;z-index:2}
+.j-num{width:80px;height:80px;border-radius:50%;background:var(--warm-dark);color:white;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border:4px solid var(--cream)}
+.j-num svg{width:32px;height:32px}
+.j-step h3{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;color:var(--warm-dark);margin-bottom:8px}
+.j-step p{font-size:14px;color:var(--text-light);line-height:1.7;font-weight:300;max-width:240px;margin:0 auto}
+.how-note{max-width:700px;margin:48px auto 0;text-align:center;padding:28px 36px;background:white;border-radius:var(--radius);border:1px solid rgba(201,169,110,0.15)}
+.how-note p{font-size:15px;color:var(--text);line-height:1.7;font-weight:300}
+.how-note strong{color:var(--warm-dark);font-weight:600}
+
+/* === WHO IT'S FOR === */
+.who{padding:100px 40px;background:var(--warm-white)}
+.who-header{text-align:center;max-width:660px;margin:0 auto 64px}
+.who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:1000px;margin:0 auto}
+.who-card{background:var(--cream);border-radius:var(--radius);padding:40px;border:1px solid rgba(201,169,110,0.1);transition:all 0.3s}
+.who-card:hover{box-shadow:0 8px 30px rgba(44,36,24,0.08);border-color:rgba(201,169,110,0.25)}
+.who-icon{width:52px;height:52px;border-radius:14px;background:var(--warm-dark);color:var(--gold-light);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.who-icon svg{width:24px;height:24px}
+.who-card h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--warm-dark);margin-bottom:10px}
+.who-card .who-desc{font-size:15px;color:var(--text-light);line-height:1.7;font-weight:300;margin-bottom:16px}
+.who-list{list-style:none;padding:0}
+.who-list li{font-size:14px;color:var(--text);padding:6px 0;display:flex;align-items:flex-start;gap:10px;line-height:1.6}
+.who-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:7px}
+
+/* === CAPABILITIES === */
+.capabilities{padding:100px 40px;background:var(--cream)}
+.cap-header{text-align:center;max-width:680px;margin:0 auto 64px}
 .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:0 auto}
 .cap-card{background:white;border-radius:var(--radius);padding:36px;border:1px solid rgba(201,169,110,0.1);box-shadow:0 2px 20px rgba(44,36,24,0.04);transition:all 0.4s}
 .cap-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(44,36,24,0.1);border-color:rgba(201,169,110,0.25)}
@@ -71,37 +113,45 @@ nav a:hover{color:var(--gold)}
 .cap-card p{font-size:14px;color:var(--text-light);line-height:1.7;font-weight:300;margin-bottom:14px}
 .cap-example{font-size:13px;color:var(--text);font-style:italic;padding:12px 16px;background:var(--cream);border-radius:10px;border-left:3px solid var(--gold-light);line-height:1.5}
 
-/* === HOW IT WORKS === */
-.how-it-works{padding:100px 40px;background:var(--warm-white)}
-.how-header{text-align:center;max-width:600px;margin:0 auto 64px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1000px;margin:0 auto;position:relative}
-.steps::before{content:'';position:absolute;top:36px;left:15%;right:15%;height:2px;background:var(--sand)}
-.step{text-align:center;position:relative;z-index:2}
-.step-num{width:72px;height:72px;border-radius:50%;background:var(--warm-dark);color:white;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin:0 auto 20px;border:4px solid var(--warm-white)}
-.step h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--warm-dark);margin-bottom:8px}
-.step p{font-size:14px;color:var(--text-light);line-height:1.7;font-weight:300;max-width:260px;margin:0 auto}
+/* === DIFFERENCE === */
+.difference{padding:100px 40px;background:var(--warm-white)}
+.diff-inner{max-width:1000px;margin:0 auto}
+.diff-header{text-align:center;max-width:660px;margin:0 auto 56px}
+.diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.diff-card{padding:36px;background:var(--cream);border-radius:var(--radius);border:1px solid rgba(201,169,110,0.1)}
+.diff-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--warm-dark);margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.diff-card h3 svg{width:22px;height:22px;color:var(--gold);flex-shrink:0}
+.diff-card p{font-size:14px;color:var(--text-light);line-height:1.7;font-weight:300}
 
-/* === PRICING === */
-.pricing{padding:100px 40px;background:var(--cream)}
-.pricing-header{text-align:center;max-width:600px;margin:0 auto 64px}
-.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:800px;margin:0 auto}
-.price-card{background:white;border-radius:var(--radius);padding:44px;border:1px solid rgba(201,169,110,0.1);box-shadow:0 2px 20px rgba(44,36,24,0.04);text-align:center;position:relative;transition:all 0.3s}
-.price-card.featured{border:2px solid var(--gold);box-shadow:0 8px 40px rgba(201,169,110,0.15)}
-.price-card.featured::before{content:'Most Popular';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:white;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 16px;border-radius:100px}
-.price-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:var(--warm-dark);margin-bottom:8px}
-.price-amount{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--warm-dark);margin-bottom:4px}
-.price-amount span{font-size:16px;font-weight:400;color:var(--text-light)}
-.price-period{font-size:14px;color:var(--text-light);margin-bottom:28px}
-.price-features{list-style:none;text-align:left;margin-bottom:32px}
-.price-features li{padding:10px 0;font-size:14px;color:var(--text);display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(240,230,211,0.4)}
-.price-features li:last-child{border-bottom:none}
-.check{color:var(--olive);font-weight:bold}
-.cross{color:#ccc}
-.price-btn{display:inline-block;width:100%;padding:14px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;text-align:center;transition:all 0.3s;font-family:'Inter',sans-serif;cursor:pointer;border:none}
-.price-btn-primary{background:var(--warm-dark);color:white}
-.price-btn-primary:hover{background:var(--gold)}
-.price-btn-secondary{background:white;color:var(--warm-dark);border:2px solid var(--sand)}
-.price-btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+/* === CHAT DEMO SECTION === */
+.demo-section{padding:100px 40px;background:linear-gradient(135deg,#1A1A2E 0%,#16213E 50%,#0F3460 100%);position:relative;overflow:hidden}
+.demo-section::before{content:'';position:absolute;top:-40%;right:-15%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.06) 0%,transparent 70%);pointer-events:none}
+.demo-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+.demo-text{color:white}
+.demo-text .section-tag{color:var(--gold)}
+.demo-text h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,40px);font-weight:600;color:white;line-height:1.2;margin-bottom:16px}
+.demo-text p{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.8;font-weight:300;margin-bottom:28px}
+.demo-features{list-style:none;padding:0}
+.demo-features li{font-size:14px;color:rgba(255,255,255,0.7);padding:8px 0;display:flex;align-items:center;gap:12px}
+.demo-features li svg{width:18px;height:18px;color:var(--gold);flex-shrink:0}
+
+/* === FOR BUSINESSES === */
+.for-biz{padding:100px 40px;background:var(--warm-dark);color:white}
+.biz-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.biz-content .section-tag{color:var(--gold)}
+.biz-content h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,40px);font-weight:600;color:white;line-height:1.2;margin-bottom:16px}
+.biz-content>p{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.8;font-weight:300;margin-bottom:32px}
+.biz-perks{list-style:none;padding:0;margin-bottom:36px}
+.biz-perks li{padding:12px 0;font-size:15px;color:rgba(255,255,255,0.8);display:flex;align-items:flex-start;gap:14px;border-bottom:1px solid rgba(255,255,255,0.08);line-height:1.6}
+.biz-perks li:last-child{border-bottom:none}
+.biz-perks li svg{width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px}
+.biz-tiers{display:flex;flex-direction:column;gap:20px}
+.biz-tier{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:28px 32px}
+.biz-tier h4{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:white;margin-bottom:6px}
+.biz-tier .tier-price{font-size:14px;color:var(--gold);font-weight:600;margin-bottom:8px}
+.biz-tier p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;font-weight:300}
+.cta-outline{display:inline-block;padding:14px 32px;border:2px solid var(--gold);color:var(--gold);border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.3s;font-family:'Inter',sans-serif}
+.cta-outline:hover{background:var(--gold);color:var(--warm-dark)}
 
 /* === TESTIMONIALS === */
 .testimonials{padding:100px 40px;background:var(--warm-white)}
@@ -131,6 +181,7 @@ nav a:hover{color:var(--gold)}
 .final-cta{padding:120px 40px;background:linear-gradient(135deg,var(--warm-dark) 0%,#3D2E1A 100%);text-align:center}
 .final-cta h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,48px);font-weight:700;color:white;margin-bottom:16px;line-height:1.2}
 .final-cta p{font-size:18px;color:rgba(255,255,255,0.6);font-weight:300;max-width:560px;margin:0 auto 36px;line-height:1.7}
+.final-cta-row{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
 
 footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
 .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
@@ -142,17 +193,20 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   nav a:not(.nav-cta){display:none}
   .ai-hero{padding:60px 20px}
   .ai-hero-inner{grid-template-columns:1fr;gap:48px}
+  .stats-row{grid-template-columns:repeat(2,1fr);gap:16px}
+  .journey{grid-template-columns:repeat(2,1fr);gap:28px}
+  .journey::before{display:none}
+  .who-grid{grid-template-columns:1fr}
   .cap-grid{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr;gap:32px}
-  .steps::before{display:none}
-  .pricing-grid{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr}
+  .demo-inner{grid-template-columns:1fr;gap:48px}
+  .biz-inner{grid-template-columns:1fr;gap:48px}
   .test-grid{grid-template-columns:1fr}
   .hero-cta-row{flex-direction:column;align-items:flex-start}
   .hero-proof{flex-direction:column;gap:8px}
-  section,.capabilities,.how-it-works,.pricing,.testimonials,.faq,.final-cta{padding:60px 20px}
+  section,.knows,.capabilities,.how-it-works,.who,.difference,.demo-section,.for-biz,.testimonials,.faq,.final-cta{padding:60px 20px}
 }
 </style>
-
 </head>
 <body>
 
@@ -169,21 +223,21 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   </nav>
 </header>
 
-<!-- HERO -->
+<!-- ============ HERO ============ -->
 <section class="ai-hero">
   <div class="ai-hero-inner">
     <div class="ai-hero-content">
-      <div class="tag"><span class="pulse"></span> AI-Powered</div>
-      <h1>Your personal <em>Mallorca</em> concierge, available 24/7</h1>
-      <p class="subtitle">Ask anything about life on the island — restaurant recommendations, property advice, school comparisons, legal guidance, event planning — and get instant, personalised answers from an AI that knows Mallorca inside out.</p>
+      <div class="tag"><span class="pulse"></span> AI-Powered Concierge</div>
+      <h1>An AI that knows <em>every corner</em> of Mallorca</h1>
+      <p class="subtitle">Portago is a trained AI concierge with deep knowledge of thousands of local businesses, services, and professionals across the island. Every restaurant, school, property agent, lawyer, architect, and hidden gem — searchable in seconds through a single conversation.</p>
       <div class="hero-cta-row">
-        <a href="#" class="cta-primary" onclick="openWaitlist();return false;">Join the Launch →</a>
-        <!-- pricing link hidden until live -->
+        <a href="#" class="cta-primary" onclick="openWaitlist();return false;">Join the Waitlist</a>
+        <a href="#how" class="cta-secondary">See how it works</a>
       </div>
       <div class="hero-proof">
-        <span>✓ Launching soon — join the waitlist</span>
-        <span>✓ 2,400+ businesses indexed</span>
-        <span>✓ Updated daily</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 3,000+ verified listings</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 18 categories</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Updated daily</span>
       </div>
     </div>
     <div class="chat-demo">
@@ -193,42 +247,38 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
           <span>Portago AI Concierge</span>
           <span class="status">Online</span>
         </div>
-        <div class="chat-body" id="chatBody">
-          <!-- Messages appear here via animation -->
-        </div>
+        <div class="chat-body" id="chatBody"></div>
         <div class="chat-input">
           <input type="text" placeholder="Ask me anything about Mallorca..." id="chatInputField" readonly>
-          <button>→</button>
+          <button>&#8594;</button>
         </div>
       </div>
       <div class="replay-btn-wrap" style="text-align:center;margin-top:20px;">
-        <button id="replayBtn" style="display:none;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);padding:10px 24px;border-radius:100px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,169,110,0.5)';this.style.color='#C9A96E'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.7)'">↻ Replay conversation</button>
+        <button id="replayBtn" style="display:none;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);padding:10px 24px;border-radius:100px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,169,110,0.5)';this.style.color='#C9A96E'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.7)'">Replay conversation</button>
       </div>
     </div>
 
+<!-- Chat animation script -->
 <script>
 (function() {
   const conversations = [
-    // Conversation 1: Family relocation
     [
       { type: 'user', text: "We're moving to Mallorca with two kids (8 & 12). Best areas for families with international schools nearby?" },
-      { type: 'bot', text: '<strong>Great question!</strong> For families with school-age children, I\'d recommend these areas:<br><br>🏡 <strong>Palma & surrounds</strong> — Closest to most international schools (Baleares Int\'l, Agora Portals, Bellver). Urban lifestyle with everything on your doorstep.<br><br>• <strong>Calvià / Santa Ponsa</strong> — Beautiful area, close to Agora Portals and King Richard III. More space, great outdoor lifestyle.<br><br>• <strong>Alaró / Binissalem</strong> — Village life at its best. 25 min to Palma schools. Amazing community feel, very safe for kids.' },
-      { type: 'user', text: 'Yes! Budget around €800k for a 4-bed house. How do those areas compare?' },
-      { type: 'bot', text: 'Here\'s a quick comparison at your budget:<br><br>📊 <strong>Palma</strong> — €800k gets a 3-4 bed apartment or small townhouse. Walking distance to schools but limited outdoor space.<br><br>📊 <strong>Calvià / Santa Ponsa</strong> — €800k gets a 4-bed villa with pool and garden. 10 min drive to schools. Beach lifestyle.<br><br>📊 <strong>Alaró</strong> — €800k gets a stunning finca-style 4-bed with land. 25 min to Palma schools but incredible quality of life.<br><br>My recommendation? <strong>Calvià</strong> gives the best balance of space, schools, and lifestyle. Shall I show you some <a href="#" style="color:var(--gold);text-decoration:underline">property agents in the area</a>?' },
+      { type: 'bot', text: '<strong>Great question!</strong> For families with school-age children, I\'d recommend these areas:<br><br><strong>Palma & surrounds</strong> — Closest to most international schools (Baleares Int\'l, Agora Portals, Bellver). Urban lifestyle with everything on your doorstep.<br><br><strong>Calvia / Santa Ponsa</strong> — Beautiful area, close to Agora Portals and King Richard III. More space, great outdoor lifestyle.<br><br><strong>Alaro / Binissalem</strong> — Village life at its best. 25 min to Palma schools. Amazing community feel, very safe for kids.' },
+      { type: 'user', text: 'Yes! Budget around 800k for a 4-bed house. How do those areas compare?' },
+      { type: 'bot', text: 'Here\'s a quick comparison at your budget:<br><br><strong>Palma</strong> — 800k gets a 3-4 bed apartment or small townhouse. Walking distance to schools but limited outdoor space.<br><br><strong>Calvia / Santa Ponsa</strong> — 800k gets a 4-bed villa with pool and garden. 10 min drive to schools. Beach lifestyle.<br><br><strong>Alaro</strong> — 800k gets a stunning finca-style 4-bed with land. 25 min to Palma schools but incredible quality of life.<br><br>My recommendation? <strong>Calvia</strong> gives the best balance of space, schools, and lifestyle. Shall I show you some <a href="#" style="color:var(--gold);text-decoration:underline">property agents in the area</a>?' },
     ],
-    // Conversation 2: Restaurant recommendation
     [
       { type: 'user', text: "Planning a special anniversary dinner. Somewhere romantic with sea views, not too touristy?" },
-      { type: 'bot', text: 'How lovely! Here are my top picks for a romantic evening:<br><br>🏆 <strong>Bens d\'Avall</strong> (Deià) — Cliffside terrace overlooking the sea. Michelin-quality Mallorcan cuisine. Absolutely magical at sunset. Book the terrace. <a href="#" style="color:var(--gold);text-decoration:underline">View listing →</a><br><br>🏆 <strong>Zaranda at Es Princep</strong> (Palma) — Two Michelin stars, rooftop with cathedral and harbour views. Fernando Pérez Arellano\'s tasting menu is extraordinary. <a href="#" style="color:var(--gold);text-decoration:underline">View listing →</a><br><br>🏆 <strong>Es Fum at St. Regis</strong> (Costa d\'en Blanes) — One Michelin star, elegant Mediterranean. The terrace feels like you\'re floating above the sea.' },
+      { type: 'bot', text: 'How lovely! Here are my top picks for a romantic evening:<br><br><strong>Bens d\'Avall</strong> (Deia) — Cliffside terrace overlooking the sea. Michelin-quality Mallorcan cuisine. Absolutely magical at sunset. Book the terrace. <a href="#" style="color:var(--gold);text-decoration:underline">View listing</a><br><br><strong>Zaranda at Es Princep</strong> (Palma) — Two Michelin stars, rooftop with cathedral and harbour views. Fernando Perez Arellano\'s tasting menu is extraordinary. <a href="#" style="color:var(--gold);text-decoration:underline">View listing</a><br><br><strong>Es Fum at St. Regis</strong> (Costa d\'en Blanes) — One Michelin star, elegant Mediterranean. The terrace feels like you\'re floating above the sea.' },
       { type: 'user', text: "Bens d'Avall sounds perfect. How do I get there and do I need to book far ahead?" },
-      { type: 'bot', text: '<strong>Bens d\'Avall</strong> — great choice! ✨<br><br>It\'s on the road between Deià and Sóller (Ma-10). About 35 mins from Palma.<br><br>● Definitely book ahead — at least 2 weeks for a weekend table, especially for the terrace. Call +34 971 632 381.<br><br>💡 <strong>Insider tip:</strong> Request the far corner table on the terrace (table 12). Best sunset view on the island. Arrive 30 min early for drinks at the bar — the gin & tonics are excellent.<br><br>Shall I add this to your saved places?' },
+      { type: 'bot', text: '<strong>Bens d\'Avall</strong> — great choice!<br><br>It\'s on the road between Deia and Soller (Ma-10). About 35 mins from Palma.<br><br>Definitely book ahead — at least 2 weeks for a weekend table, especially for the terrace. Call +34 971 632 381.<br><br><strong>Insider tip:</strong> Request the far corner table on the terrace (table 12). Best sunset view on the island. Arrive 30 min early for drinks at the bar — the gin & tonics are excellent.<br><br>Shall I add this to your saved places?' },
     ],
-    // Conversation 3: Renovation advice
     [
-      { type: 'user', text: "Just bought an old finca near Artà. Want to renovate it — where do I even start?" },
-      { type: 'bot', text: 'Exciting project! Finca renovations are Mallorca\'s bread and butter. Here\'s your roadmap:<br><br>📋 <strong>Step 1: Architect</strong> — You need a local architect who knows Balearic planning rules. They\'ll assess the structure and handle the <em>licencia de obra</em> (building permit).<br><br>📋 <strong>Step 2: Permits</strong> — Artà town hall is relatively straightforward. Allow 2-4 months. Your architect handles this.<br><br>📋 <strong>Step 3: Builder</strong> — Get 3 quotes minimum. Expect €1,200-1,800/sqm for a quality renovation.<br><br>Want me to recommend some <a href="#" style="color:var(--gold);text-decoration:underline">architects</a> and <a href="#" style="color:var(--gold);text-decoration:underline">builders</a> experienced with finca renovations in the Artà area?' },
+      { type: 'user', text: "Just bought an old finca near Arta. Want to renovate it — where do I even start?" },
+      { type: 'bot', text: 'Exciting project! Finca renovations are Mallorca\'s bread and butter. Here\'s your roadmap:<br><br><strong>Step 1: Architect</strong> — You need a local architect who knows Balearic planning rules. They\'ll assess the structure and handle the <em>licencia de obra</em> (building permit).<br><br><strong>Step 2: Permits</strong> — Arta town hall is relatively straightforward. Allow 2-4 months. Your architect handles this.<br><br><strong>Step 3: Builder</strong> — Get 3 quotes minimum. Expect 1,200-1,800 per sqm for a quality renovation.<br><br>Want me to recommend some <a href="#" style="color:var(--gold);text-decoration:underline">architects</a> and <a href="#" style="color:var(--gold);text-decoration:underline">builders</a> experienced with finca renovations in the Arta area?' },
       { type: 'user', text: 'Yes please! And roughly what budget should I expect for a 200sqm finca?' },
-      { type: 'bot', text: 'For a 200sqm finca renovation near Artà:<br><br>€ <strong>Budget range:</strong> €240k - €360k<br>— Basic quality: €1,200/sqm = €240k<br>— Mid-range: €1,500/sqm = €300k<br>— High spec: €1,800/sqm = €360k<br><br>⚠️ Add 15-20% contingency (old fincas love surprises!)<br><br>Top architects for finca renovations:<br>• <strong>OHLAB</strong> — Award-winning, modern-meets-traditional <a href="#" style="color:var(--gold);text-decoration:underline">→</a><br>• <strong>Isla Architects</strong> — Specialist in rural Mallorca <a href="#" style="color:var(--gold);text-decoration:underline">→</a><br>• <strong>Estudio Palma</strong> — Great budget-conscious work <a href="#" style="color:var(--gold);text-decoration:underline">→</a><br><br>Timeline: typically 8-14 months including permits. Start the architect process now!' },
+      { type: 'bot', text: 'For a 200sqm finca renovation near Arta:<br><br><strong>Budget range:</strong> 240k - 360k<br>— Basic quality: 1,200/sqm = 240k<br>— Mid-range: 1,500/sqm = 300k<br>— High spec: 1,800/sqm = 360k<br><br>Add 15-20% contingency (old fincas love surprises!)<br><br>Top architects for finca renovations:<br><strong>OHLAB</strong> — Award-winning, modern-meets-traditional <a href="#" style="color:var(--gold);text-decoration:underline">View</a><br><strong>Isla Architects</strong> — Specialist in rural Mallorca <a href="#" style="color:var(--gold);text-decoration:underline">View</a><br><strong>Estudio Palma</strong> — Great budget-conscious work <a href="#" style="color:var(--gold);text-decoration:underline">View</a><br><br>Timeline: typically 8-14 months including permits. Start the architect process now!' },
     ],
   ];
 
@@ -244,7 +294,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
     div.innerHTML = '<span></span><span></span><span></span>';
     div.style.cssText = 'display:flex;gap:5px;align-items:center;padding:14px 18px;background:#F0F4F8;border-radius:18px;border-bottom-left-radius:4px;width:fit-content;margin-bottom:12px;';
     div.querySelectorAll('span').forEach((s, i) => {
-      s.style.cssText = `width:7px;height:7px;border-radius:50%;background:#B0B8C4;display:block;animation:typDot 1.4s infinite;animation-delay:${i*0.2}s;`;
+      s.style.cssText = 'width:7px;height:7px;border-radius:50%;background:#B0B8C4;display:block;animation:typDot 1.4s infinite;animation-delay:'+i*0.2+'s;';
     });
     return div;
   }
@@ -255,10 +305,8 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
       let i = 0;
       const speed = 35 + Math.random() * 20;
       function typeChar() {
-        if (i < text.length) {
-          chatInput.value += text[i]; i++;
-          setTimeout(typeChar, speed);
-        } else { setTimeout(resolve, 400); }
+        if (i < text.length) { chatInput.value += text[i]; i++; setTimeout(typeChar, speed); }
+        else { setTimeout(resolve, 400); }
       }
       typeChar();
     });
@@ -267,7 +315,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   function addMessage(type, html) {
     return new Promise(resolve => {
       const div = document.createElement('div');
-      div.className = `msg msg-${type}`;
+      div.className = 'msg msg-' + type;
       div.style.opacity = '0'; div.style.transform = 'translateY(10px)';
       div.innerHTML = html;
       chatBody.appendChild(div);
@@ -287,7 +335,6 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
     replayBtn.style.display = 'none';
     chatBody.innerHTML = '';
     chatInput.value = '';
-
     for (const msg of conv) {
       if (msg.type === 'user') {
         await typeInInput(msg.text);
@@ -311,7 +358,6 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
 
   function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-  // Auto-play first conversation when section is visible
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting && !isPlaying) {
       observer.disconnect();
@@ -320,13 +366,11 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   }, { threshold: 0.3 });
   observer.observe(document.querySelector('.chat-demo'));
 
-  // Replay cycles through conversations
   replayBtn.addEventListener('click', () => {
     currentConv = (currentConv + 1) % conversations.length;
     playConversation(conversations[currentConv]);
   });
 
-  // Add typing dot animation
   const style = document.createElement('style');
   style.textContent = '@keyframes typDot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}';
   document.head.appendChild(style);
@@ -335,7 +379,143 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   </div>
 </section>
 
-<!-- CAPABILITIES -->
+<!-- ============ WHAT PORTAGO KNOWS ============ -->
+<section class="knows">
+  <div class="knows-inner">
+    <div class="knows-header">
+      <div class="section-tag">The Knowledge Base</div>
+      <h2 class="section-title">Not a search engine. A local expert.</h2>
+      <p class="section-sub">Portago is built on a curated, verified database of Mallorca's businesses, services, and local knowledge — not scraped web results. Every listing is checked, categorised, and enriched with the kind of detail only a local would know.</p>
+    </div>
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-num">3,000<span class="gold">+</span></div>
+        <div class="stat-label">Verified local listings</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">18</div>
+        <div class="stat-label">Categories covered</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Languages supported</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Always available</div>
+      </div>
+    </div>
+    <div class="cat-pills">
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Property & Real Estate</div>
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg> Restaurants & Dining</div>
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2-4 4-4-4"/><path d="M12 6v14"/><rect x="2" y="8" width="20" height="12" rx="2"/></svg> Legal & Tax</div>
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 6 3 6 3s3 0 6-3v-5"/></svg> Schools & Education</div>
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/></svg> Architecture & Builders</div>
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg> Health & Wellness</div>
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Relocation Services</div>
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8l4 4-4 4"/><path d="M3 12h18"/></svg> Transport & Travel</div>
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Activities & Leisure</div>
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/></svg> Shopping & Markets</div>
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Co-working & Business</div>
+      <div class="cat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg> Events & Culture</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how-it-works" id="how">
+  <div class="how-header">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">From question to action in seconds</h2>
+    <p class="section-sub">This is not generic AI. Portago is trained on real, verified Mallorca data — so every answer is specific, accurate, and actionable.</p>
+  </div>
+  <div class="journey">
+    <div class="j-step">
+      <div class="j-num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <h3>Ask anything</h3>
+      <p>Type a question in natural language, just like texting a knowledgeable friend who lives on the island.</p>
+    </div>
+    <div class="j-step">
+      <div class="j-num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+      <h3>AI searches real data</h3>
+      <p>The concierge queries 3,000+ verified listings, local reviews, and curated knowledge — not the open internet.</p>
+    </div>
+    <div class="j-step">
+      <div class="j-num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+      <h3>Personalised answer</h3>
+      <p>You receive a tailored response with specific names, addresses, prices, and insider tips — not ten blue links.</p>
+    </div>
+    <div class="j-step">
+      <div class="j-num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3>Save, share, or book</h3>
+      <p>Click through to listings, save recommendations, share with family, or continue the conversation to refine your search.</p>
+    </div>
+  </div>
+  <div class="how-note">
+    <p><strong>This is not ChatGPT with a Mallorca prompt.</strong> Portago is built on a proprietary, hand-curated database of verified local businesses and expert knowledge. Every recommendation comes from real data — not hallucinated search results.</p>
+  </div>
+</section>
+
+<!-- ============ WHO IT'S FOR ============ -->
+<section class="who">
+  <div class="who-header">
+    <div class="section-tag">Who It's For</div>
+    <h2 class="section-title">Built for anyone navigating island life</h2>
+    <p class="section-sub">Whether you landed last week or have lived here for years, the concierge adapts to where you are in your Mallorca journey.</p>
+  </div>
+  <div class="who-grid">
+    <div class="who-card">
+      <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <h3>Expats & Relocators</h3>
+      <p class="who-desc">Moving to a new country is overwhelming. The concierge becomes your trusted guide through every step of settling in.</p>
+      <ul class="who-list">
+        <li>Find the right international school for your children</li>
+        <li>Navigate NIE applications, residency, and tax registration</li>
+        <li>Discover English-speaking doctors, dentists, and lawyers</li>
+        <li>Set up utilities, banking, and healthcare</li>
+        <li>Find your community — clubs, groups, coworking spaces</li>
+      </ul>
+    </div>
+    <div class="who-card">
+      <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <h3>Holiday Homeowners</h3>
+      <p class="who-desc">Managing a property from another country means constantly needing reliable local contacts you can trust.</p>
+      <ul class="who-list">
+        <li>Find vetted property managers and key-holders</li>
+        <li>Get pool maintenance, cleaning, and garden services</li>
+        <li>Source reliable electricians, plumbers, and handymen</li>
+        <li>Understand rental licence requirements and regulations</li>
+        <li>Coordinate renovations and improvements remotely</li>
+      </ul>
+    </div>
+    <div class="who-card">
+      <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+      <h3>Visitors & Tourists</h3>
+      <p class="who-desc">Skip the tourist traps and generic review sites. Get recommendations that locals actually stand behind.</p>
+      <ul class="who-list">
+        <li>Discover restaurants by vibe, budget, and occasion</li>
+        <li>Plan complete itineraries for any length of stay</li>
+        <li>Find hidden beaches, hikes, and local experiences</li>
+        <li>Book sailing trips, wine tours, and activities</li>
+        <li>Get real-time tips on markets, festivals, and events</li>
+      </ul>
+    </div>
+    <div class="who-card">
+      <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg></div>
+      <h3>Property Buyers</h3>
+      <p class="who-desc">Buying property in a foreign country means navigating lawyers, agents, taxes, and areas you don't know yet.</p>
+      <ul class="who-list">
+        <li>Compare areas by lifestyle, price, schools, and commute</li>
+        <li>Understand the full buying process and costs step by step</li>
+        <li>Find vetted property agents who speak your language</li>
+        <li>Get architect, builder, and renovation cost estimates</li>
+        <li>Plan Golden Visa, digital nomad visa, or residency routes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAPABILITIES ============ -->
 <section class="capabilities">
   <div class="cap-header">
     <div class="section-tag">What It Can Do</div>
@@ -345,90 +525,127 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   <div class="cap-grid">
     <div class="cap-card">
       <div class="cap-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
-      <h3>Restaurant Finder</h3>
-      <p>Discover restaurants by cuisine, vibe, budget, location, or occasion. Real reviews, real recommendations — not generic lists.</p>
-      <div class="cap-example">"Find a romantic dinner spot in Deià with a terrace and sea views, under €80 per person"</div>
+      <h3>Restaurant & Dining</h3>
+      <p>Discover restaurants by cuisine, vibe, budget, location, or occasion. Real reviews, real recommendations — curated from verified local knowledge, not aggregated ratings.</p>
+      <div class="cap-example">"Find a romantic dinner spot in Deia with a terrace and sea views, under 80 per person"</div>
     </div>
     <div class="cap-card">
       <div class="cap-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-      <h3>Property Advice</h3>
-      <p>Compare areas, understand price trends, find agents, and get buying advice tailored to your situation — budget, family, lifestyle.</p>
-      <div class="cap-example">"Compare Alaró vs Sóller for a family with young kids. €800k budget, want village life."</div>
+      <h3>Property & Area Advice</h3>
+      <p>Compare areas by property prices, schools, lifestyle, and commute times. Understand market trends, price-per-square-metre data, and what your budget gets you in each area of the island.</p>
+      <div class="cap-example">"Compare Alaro vs Soller for a family with young kids. 800k budget, want village life."</div>
     </div>
     <div class="cap-card">
       <div class="cap-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 6 3 6 3s3 0 6-3v-5"/></svg></div>
-      <h3>School Comparisons</h3>
-      <p>Compare international schools by curriculum (IB, British, German), fees, languages, extracurriculars, and parent reviews.</p>
-      <div class="cap-example">"Which international schools near Palma offer the IB programme? What are the fees?"</div>
+      <h3>Schools & Education</h3>
+      <p>Compare international schools by curriculum (IB, British, German, Montessori), fees, languages, extracurriculars, and parent reviews. Covers nurseries through to sixth form.</p>
+      <div class="cap-example">"Which international schools near Palma offer the IB programme? What are the annual fees?"</div>
     </div>
     <div class="cap-card">
       <div class="cap-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2-4 4-4-4"/><path d="M12 6v14"/><path d="M8 8H4a2 2 0 0 0-2 2v2h6"/><path d="m2 12 4 4"/><path d="M16 8h4a2 2 0 0 1 2 2v2h-6"/><path d="m22 12-4 4"/></svg></div>
       <h3>Legal & Tax Guidance</h3>
-      <p>Navigate NIE applications, tax residency, property purchase processes, and administrative requirements with clear, step-by-step guidance.</p>
-      <div class="cap-example">"What do I need to register as a tax resident in Spain? Walk me through the process."</div>
+      <p>Navigate NIE applications, property transfer taxes (8-13%), residency pathways, Golden Visa requirements, and non-resident obligations. Step-by-step guidance with estimated costs and timelines.</p>
+      <div class="cap-example">"What are the total costs and taxes on buying a 600k property in Mallorca as a non-resident?"</div>
     </div>
     <div class="cap-card">
       <div class="cap-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg></div>
-      <h3>Event & Itinerary Planning</h3>
-      <p>Plan weekends, guest itineraries, special occasions, and seasonal activities. Local insights, not tourist traps.</p>
+      <h3>Events & Itineraries</h3>
+      <p>Plan weekends, guest itineraries, and seasonal activities with local insider knowledge. The AI considers weather, travel times, group size, and personal preferences to build the perfect plan.</p>
       <div class="cap-example">"Plan a weekend for friends visiting in March — outdoor activities, good food, some culture."</div>
     </div>
     <div class="cap-card">
       <div class="cap-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg></div>
       <h3>Construction & Renovation</h3>
-      <p>Get advice on permits, architects, builders, budgets, timelines, and the unique challenges of building in Mallorca.</p>
-      <div class="cap-example">"I want to renovate a finca near Alaró — what permits do I need and what should I budget?"</div>
+      <p>Get advice on building permits, architects, builders, budgets, and timelines. Includes per-square-metre renovation costs by area, planning regulation guidance, and vetted professional recommendations.</p>
+      <div class="cap-example">"I want to renovate a finca near Alaro — what permits do I need and what should I budget?"</div>
     </div>
     <div class="cap-card">
       <div class="cap-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-      <h3>Relocation Help</h3>
-      <p>Moving to Mallorca? Get a complete roadmap — from choosing an area to setting up utilities, healthcare, and banking.</p>
-      <div class="cap-example">"We're relocating from London. What's the full checklist for moving to Mallorca with kids?"</div>
+      <h3>Relocation Support</h3>
+      <p>Moving to Mallorca? Get a complete roadmap covering area selection, visa applications, healthcare registration, school enrollment, utility setup, banking, and finding your community.</p>
+      <div class="cap-example">"We're relocating from Munich with two kids. Give me a full checklist for the move."</div>
     </div>
     <div class="cap-card">
       <div class="cap-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
-      <h3>Wellness & Lifestyle</h3>
-      <p>Find yoga studios, personal trainers, clinics, spas, and wellness retreats. Recommendations based on your preferences.</p>
-      <div class="cap-example">"I'm looking for a good Pilates studio in Santa Catalina with morning classes."</div>
+      <h3>Health & Wellness</h3>
+      <p>Find English-speaking doctors, dentists, and specialists. Discover yoga studios, personal trainers, spas, and wellness retreats — with opening hours, languages spoken, and genuine reviews.</p>
+      <div class="cap-example">"I need an English-speaking paediatrician in Palma who accepts private insurance."</div>
     </div>
     <div class="cap-card">
       <div class="cap-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
-      <h3>Leisure & Activities</h3>
-      <p>Sailing, hiking, cycling, golf, diving — discover the best of Mallorca's outdoor lifestyle with local insider knowledge.</p>
+      <h3>Activities & Leisure</h3>
+      <p>Sailing, hiking, cycling, golf, diving, padel, horse riding — discover the best of Mallorca's outdoor lifestyle with local insider knowledge and seasonal recommendations.</p>
       <div class="cap-example">"Best sailing charter companies for a day trip to Cabrera with family?"</div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="how-it-works">
-  <div class="how-header">
-    <div class="section-tag">How It Works</div>
-    <h2 class="section-title">Three steps to better answers</h2>
-    <p class="section-sub">No app to download. No account required for basic questions.</p>
-  </div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Ask anything</h3>
-      <p>Type your question in natural language — just like texting a knowledgeable friend who lives on the island.</p>
+<!-- ============ THE PORTAGO DIFFERENCE ============ -->
+<section class="difference">
+  <div class="diff-inner">
+    <div class="diff-header">
+      <div class="section-tag">Why Portago</div>
+      <h2 class="section-title">Why not just Google it?</h2>
+      <p class="section-sub">Google gives you ten blue links and a prayer. Portago gives you one considered answer from someone who actually knows the island.</p>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Get personalised answers</h3>
-      <p>The AI searches 2,400+ verified listings, reviews, and local data to craft a tailored response.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Take action</h3>
-      <p>Click through to listings, make reservations, save recommendations, or keep the conversation going.</p>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Curated, not scraped</h3>
+        <p>Every listing is verified by our team. We check opening hours, contact details, and service quality. No dead links, no closed businesses, no outdated information cluttering your results.</p>
+      </div>
+      <div class="diff-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Local knowledge, not tourist traps</h3>
+        <p>Our database is built with input from residents, expats, and local professionals — people who live here year-round. You get the places locals actually go, not the ones paying for TripAdvisor placement.</p>
+      </div>
+      <div class="diff-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Personalised to your situation</h3>
+        <p>The concierge remembers your preferences, family situation, budget, and priorities. A family relocating from Hamburg gets different recommendations than a couple retiring from London.</p>
+      </div>
+      <div class="diff-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> One answer, not ten blue links</h3>
+        <p>Ask a question, get a direct answer with specific names, addresses, prices, and insider tips. No scrolling through forums, no cross-referencing outdated blog posts, no conflicting advice.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING - hidden until AI service is live -->
+<!-- ============ FOR BUSINESSES ============ -->
+<section class="for-biz" id="businesses">
+  <div class="biz-inner">
+    <div class="biz-content">
+      <div class="section-tag">For Local Businesses</div>
+      <h2>Get discovered by the people who matter most</h2>
+      <p>Portago connects your business directly with international residents, expats, and visitors actively searching for services like yours. No advertising budget required — list your business for free and start receiving qualified enquiries.</p>
+      <ul class="biz-perks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Free basic listing in the Portago directory — name, address, contact, photos</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> AI-powered recommendations — your business suggested to users whose needs match your services</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Reach international clients in 5 languages without translation costs</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Featured and premium listings available for increased visibility and lead generation</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Monthly analytics showing views, enquiries, and how users find you</li>
+      </ul>
+      <a href="list-your-business.html" class="cta-outline">List Your Business — Free</a>
+    </div>
+    <div class="biz-tiers">
+      <div class="biz-tier">
+        <h4>Basic Listing</h4>
+        <div class="tier-price">Free</div>
+        <p>Business name, address, phone, website, one photo, and category listing. Everything you need to be discoverable by the AI concierge.</p>
+      </div>
+      <div class="biz-tier" style="border-color:var(--gold);">
+        <h4>Premium Listing</h4>
+        <div class="tier-price">From 49/month</div>
+        <p>Up to 10 photos, full description, opening hours, languages spoken, social links, priority placement, review management, and monthly analytics.</p>
+      </div>
+      <div class="biz-tier">
+        <h4>Featured Listing</h4>
+        <div class="tier-price">From 99/month</div>
+        <p>Top-of-category placement, featured badge, inclusion in area guides, direct enquiry routing, newsletter features, and quarterly performance reviews.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- TESTIMONIALS -->
+<!-- ============ TESTIMONIALS ============ -->
 <section class="testimonials">
   <div class="test-header">
     <div class="section-tag">What People Say</div>
@@ -436,15 +653,15 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   </div>
   <div class="test-grid">
     <div class="test-card">
-      <div class="test-stars">★★★★★</div>
+      <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <blockquote>This saved us weeks of research when we were house-hunting. The AI compared three areas we were considering, factored in school proximity, and even estimated renovation budgets. Incredible tool.</blockquote>
       <div class="test-author">
         <div class="test-avatar">JR</div>
-        <div><div class="test-name">James & Rachel T.</div><div class="test-detail">Moved from London, now in Alaró</div></div>
+        <div><div class="test-name">James & Rachel T.</div><div class="test-detail">Moved from London, now in Alaro</div></div>
       </div>
     </div>
     <div class="test-card">
-      <div class="test-stars">★★★★★</div>
+      <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <blockquote>I use it every week for restaurant recommendations. It actually learns my preferences — it knows I love natural wine, terrace dining, and hate tourist spots. It's like having a local friend on speed dial.</blockquote>
       <div class="test-author">
         <div class="test-avatar">SH</div>
@@ -452,8 +669,8 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
       </div>
     </div>
     <div class="test-card">
-      <div class="test-stars">★★★★★</div>
-      <blockquote>The legal and tax guidance alone is worth the subscription. It walked me through the entire NIE and residency process step by step, told me which gestoría to use, and what documents to prepare. Flawless.</blockquote>
+      <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>The legal and tax guidance alone is worth it. It walked me through the entire NIE and residency process step by step, told me which gestoria to use, and what documents to prepare. Flawless.</blockquote>
       <div class="test-author">
         <div class="test-avatar">MK</div>
         <div><div class="test-name">Marcus K.</div><div class="test-detail">German entrepreneur, Santa Catalina</div></div>
@@ -462,7 +679,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- ============ FAQ ============ -->
 <section class="faq">
   <div class="faq-header">
     <div class="section-tag">FAQ</div>
@@ -470,51 +687,73 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   </div>
   <div class="faq-list">
     <div class="faq-item open">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does the AI Concierge work?</div>
-      <div class="faq-a">The Portago AI Concierge is powered by advanced language AI trained on our comprehensive database of 2,400+ Mallorca businesses, local knowledge, and expert-verified information. It understands natural language questions and provides personalised, contextual answers — not generic search results.</div>
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What exactly is the Portago AI Concierge?</div>
+      <div class="faq-a">It's an AI assistant trained on a curated database of 3,000+ verified Mallorca businesses, services, and local knowledge across 18 categories. You ask questions in natural language and receive personalised, specific answers — with real names, addresses, prices, and insider tips. Think of it as a knowledgeable local friend available 24/7.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How is this different from ChatGPT or Google?</div>
+      <div class="faq-a">ChatGPT draws from general internet data and can hallucinate facts. Google gives you ten links and makes you do the research. Portago is trained on a hand-curated, verified local database that's updated daily. Every recommendation is backed by real data — not scraped reviews or outdated blog posts. You get one considered answer, not a page of search results.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">When does it launch?</div>
+      <div class="faq-a">The AI Concierge is launching soon. Join the waitlist to be notified the moment it goes live. Early supporters will receive exclusive perks and priority access. The underlying directory of 3,000+ businesses is already live and growing daily.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is it free to use?</div>
+      <div class="faq-a">There will be a free tier with a limited number of daily questions covering restaurants, activities, and basic area information. A premium tier will unlock unlimited questions plus deeper capabilities — property analysis, school comparisons, legal and tax guidance, construction advice, and personalised recommendations that learn your preferences over time.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does it know all this information?</div>
+      <div class="faq-a">We've built a comprehensive database covering every major business category on the island — from restaurants and schools to lawyers, architects, and property agents. Each listing is verified by our team, enriched with local knowledge, and updated regularly. We combine this structured data with expert-contributed content on legal processes, tax requirements, area guides, and more.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is the information accurate and up to date?</div>
-      <div class="faq-a">Yes. Our database is updated daily with the latest business information, opening hours, reviews, and pricing. For legal and tax guidance, we partner with local professionals to ensure accuracy. However, we always recommend confirming critical details (especially legal/financial) with a qualified professional.</div>
+      <div class="faq-a">Yes. Our database is updated daily with the latest business information, opening hours, reviews, and pricing. For legal and tax guidance, we partner with local professionals to ensure accuracy. However, we always recommend confirming critical details (especially legal and financial) with a qualified professional — and the concierge can recommend the right one.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I use it before moving to Mallorca?</div>
-      <div class="faq-a">Absolutely — that's one of the most popular use cases. Many users start with the Concierge months before their move, using it to research areas, compare schools, understand the property market, and plan their relocation step by step.</div>
+      <div class="faq-a">Absolutely — that's one of the most popular use cases. Many users start months before their move, using the concierge to research areas, compare schools, understand the property market, estimate costs, and plan their relocation step by step. It's available 24/7 regardless of your time zone.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's the difference between free and premium?</div>
-      <div class="faq-a">The free Explorer tier gives you 5 questions per day, covering restaurants and basic area info. The Resident tier (€9.99/mo or €79/year) unlocks unlimited questions plus deep property analysis, school comparisons, legal/tax guidance, construction advice, and personalised recommendations that learn your preferences over time.</div>
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What languages does it support?</div>
+      <div class="faq-a">The concierge supports English, German, Spanish, French, and Swedish — the five most common languages among Mallorca's international community. You can switch languages mid-conversation.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can it replace a real estate agent or lawyer?</div>
-      <div class="faq-a">No — and it's not designed to. The AI Concierge is a research and guidance tool that helps you make more informed decisions and ask better questions. For transactions, contracts, and official filings, we always recommend working with qualified local professionals (and we can recommend the right ones).</div>
+      <div class="faq-a">No — and it's not designed to. The AI Concierge is a research and guidance tool that helps you make more informed decisions and ask better questions. For transactions, contracts, and official filings, we always recommend working with qualified local professionals. The concierge can recommend the right ones based on your language, location, and specific needs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">I'm a local business — how do I get listed?</div>
+      <div class="faq-a">Basic listings are completely free. Visit our "List Your Business" page to claim or create your listing. Once listed, your business becomes discoverable through the AI concierge — meaning users searching for your type of service will see your name, details, and reviews. Premium and featured tiers are available for businesses wanting enhanced visibility.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is my data private?</div>
-      <div class="faq-a">Yes. We don't share your conversations or personal data with third parties. Your chat history (for premium users) is encrypted and only used to improve your personal recommendations. You can delete your data at any time.</div>
+      <div class="faq-a">Yes. We don't share your conversations or personal data with third parties. Your chat history is encrypted and only used to improve your personal recommendations. You can delete your data at any time. We're fully GDPR compliant.</div>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
+<!-- ============ FINAL CTA ============ -->
 <section class="final-cta">
-  <h2>Be first to experience<br>the future of island living</h2>
-  <p>The AI Concierge is launching soon. Join the waitlist to be first in line — early supporters get exclusive perks and lifetime pricing.</p>
-  <a href="#" class="cta-primary" onclick="openWaitlist();return false;">Join the Launch →</a>
+  <h2>Your Mallorca journey<br>starts with a question</h2>
+  <p>Whether you're planning a move, managing a property, or simply looking for the best restaurant tonight — the Portago Concierge has the answer.</p>
+  <div class="final-cta-row">
+    <a href="#" class="cta-primary" onclick="openWaitlist();return false;">Join the Waitlist</a>
+    <a href="list-your-business.html" class="cta-outline" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);" onmouseover="this.style.borderColor='#C9A96E';this.style.color='#C9A96E'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)';this.style.color='rgba(255,255,255,0.8)'">List Your Business — Free</a>
+  </div>
 </section>
 
 <footer>
   <div class="footer-inner">
     <a href="index.html" class="logo">Portago<span>.</span></a>
-    <p>© 2026 Portago. All rights reserved.</p>
+    <p>&copy; 2026 Portago. All rights reserved.</p>
   </div>
 </footer>
-
 
 <!-- WAITLIST MODAL -->
 <div id="waitlistModal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
   <div style="background:white;border-radius:24px;max-width:480px;width:90%;padding:48px;text-align:center;position:relative;box-shadow:0 25px 80px rgba(0,0,0,0.3);">
-    <button onclick="closeWaitlist()" style="position:absolute;top:16px;right:20px;background:none;border:none;font-size:24px;cursor:pointer;color:#8A7E6E;">×</button>
+    <button onclick="closeWaitlist()" style="position:absolute;top:16px;right:20px;background:none;border:none;font-size:24px;cursor:pointer;color:#8A7E6E;">&times;</button>
     <div style="margin-bottom:16px;"><svg width="52" height="40" viewBox="0 0 120 85" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35 8 C25 5, 12 10, 8 22 C4 34, 5 48, 12 58 C18 66, 28 72, 42 75 C52 77, 65 78, 78 74 C88 70, 98 62, 105 50 C110 40, 112 28, 105 18 C98 10, 85 5, 72 6 C62 7, 55 10, 50 12 C45 10, 40 9, 35 8Z" stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linejoin="round"/></svg></div>
     <h2 style="font-family:'Playfair Display',serif;font-size:28px;color:#2C2418;margin-bottom:8px;">Join the Launch</h2>
     <p style="font-size:15px;color:#8A7E6E;line-height:1.7;margin-bottom:28px;">Be the first to experience the Portago AI Concierge. We'll notify you as soon as it's live — plus early supporters get exclusive perks.</p>
@@ -532,12 +771,11 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
         <option value="construction">Construction & renovation</option>
         <option value="everything">All of the above!</option>
       </select>
-      <button type="submit" style="width:100%;padding:16px;background:linear-gradient(135deg,#C9A96E 0%,#C4703F 100%);color:white;border:none;border-radius:100px;font-size:16px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.3s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(201,169,110,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">Join the Waitlist →</button>
+      <button type="submit" style="width:100%;padding:16px;background:linear-gradient(135deg,#C9A96E 0%,#C4703F 100%);color:white;border:none;border-radius:100px;font-size:16px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.3s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(201,169,110,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">Join the Waitlist</button>
     </form>
     <p style="font-size:12px;color:#B0A898;margin-top:16px;">No spam, ever. Just launch updates and early access.</p>
-    <!-- Success state -->
     <div id="waitlistSuccess" style="display:none;">
-      <div style="font-size:48px;margin-bottom:16px;">🎉</div>
+      <div style="margin-bottom:16px;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
       <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:#2C2418;margin-bottom:8px;">You're on the list!</h3>
       <p style="font-size:15px;color:#8A7E6E;line-height:1.7;">We'll be in touch soon. In the meantime, explore the directory and discover what Mallorca has to offer.</p>
       <a href="index.html" style="display:inline-block;margin-top:20px;padding:12px 28px;background:#2C2418;color:white;border-radius:100px;text-decoration:none;font-size:14px;font-weight:600;">Explore the Directory</a>
@@ -557,11 +795,9 @@ document.getElementById('waitlistModal').addEventListener('click',function(e){if
 function submitWaitlist(e){
   e.preventDefault();
   const data={name:document.getElementById('wl-name').value,email:document.getElementById('wl-email').value,interest:document.getElementById('wl-interest').value,source:'ai-concierge',timestamp:new Date().toISOString()};
-  // Store in localStorage as backup
   const existing=JSON.parse(localStorage.getItem('portago_waitlist')||'[]');
   existing.push(data);
   localStorage.setItem('portago_waitlist',JSON.stringify(existing));
-  // Show success
   document.getElementById('waitlistForm').style.display='none';
   document.getElementById('waitlistSuccess').style.display='block';
   console.log('Waitlist signup:',data);
