@@ -190,17 +190,144 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
           <span>Portago AI Concierge</span>
           <span class="status">Online</span>
         </div>
-        <div class="chat-body">
-          <div class="msg msg-user">We're moving to Mallorca with two kids (8 & 12). Best areas for families with international schools nearby?</div>
-          <div class="msg msg-bot"><strong>Great question!</strong> For families with school-age children, I'd recommend:<br><br>🏡 <strong>Palma & surrounds</strong> — Closest to most international schools (Baleares Int'l, Agora Portals, Bellver). Urban lifestyle with everything on your doorstep.<br><br>🌿 <strong>Calvià / Santa Ponsa</strong> — Close to Agora Portals and King Richard III. More space, great outdoor lifestyle.<br><br>⛰️ <strong>Alaró / Binissalem</strong> — Village life at its best. 25 min to Palma schools. Amazing community feel.<br><br>Want me to compare property prices across these areas?</div>
-          <div class="msg msg-user">Yes please! Budget around €800k for a 4-bed house.</div>
+        <div class="chat-body" id="chatBody">
+          <!-- Messages appear here via animation -->
         </div>
         <div class="chat-input">
-          <input type="text" placeholder="Ask me anything about Mallorca...">
+          <input type="text" placeholder="Ask me anything about Mallorca..." id="chatInputField" readonly>
           <button>→</button>
         </div>
       </div>
+      <div class="replay-btn-wrap" style="text-align:center;margin-top:20px;">
+        <button id="replayBtn" style="display:none;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);padding:10px 24px;border-radius:100px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,169,110,0.5)';this.style.color='#C9A96E'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.7)'">↻ Replay conversation</button>
+      </div>
     </div>
+
+<script>
+(function() {
+  const conversations = [
+    // Conversation 1: Family relocation
+    [
+      { type: 'user', text: "We're moving to Mallorca with two kids (8 & 12). Best areas for families with international schools nearby?" },
+      { type: 'bot', text: '<strong>Great question!</strong> For families with school-age children, I\'d recommend these areas:<br><br>🏡 <strong>Palma & surrounds</strong> — Closest to most international schools (Baleares Int\'l, Agora Portals, Bellver). Urban lifestyle with everything on your doorstep.<br><br>🌿 <strong>Calvià / Santa Ponsa</strong> — Beautiful area, close to Agora Portals and King Richard III. More space, great outdoor lifestyle.<br><br>⛰️ <strong>Alaró / Binissalem</strong> — Village life at its best. 25 min to Palma schools. Amazing community feel, very safe for kids.' },
+      { type: 'user', text: 'Yes! Budget around €800k for a 4-bed house. How do those areas compare?' },
+      { type: 'bot', text: 'Here\'s a quick comparison at your budget:<br><br>📊 <strong>Palma</strong> — €800k gets a 3-4 bed apartment or small townhouse. Walking distance to schools but limited outdoor space.<br><br>📊 <strong>Calvià / Santa Ponsa</strong> — €800k gets a 4-bed villa with pool and garden. 10 min drive to schools. Beach lifestyle.<br><br>📊 <strong>Alaró</strong> — €800k gets a stunning finca-style 4-bed with land. 25 min to Palma schools but incredible quality of life.<br><br>My recommendation? <strong>Calvià</strong> gives the best balance of space, schools, and lifestyle. Shall I show you some <a href="#" style="color:var(--gold);text-decoration:underline">property agents in the area</a>?' },
+    ],
+    // Conversation 2: Restaurant recommendation
+    [
+      { type: 'user', text: "Planning a special anniversary dinner. Somewhere romantic with sea views, not too touristy?" },
+      { type: 'bot', text: 'How lovely! Here are my top picks for a romantic evening:<br><br>🥇 <strong>Bens d\'Avall</strong> (Deià) — Cliffside terrace overlooking the sea. Michelin-quality Mallorcan cuisine. Absolutely magical at sunset. Book the terrace. <a href="#" style="color:var(--gold);text-decoration:underline">View listing →</a><br><br>🥈 <strong>Zaranda at Es Princep</strong> (Palma) — Two Michelin stars, rooftop with cathedral and harbour views. Fernando Pérez Arellano\'s tasting menu is extraordinary. <a href="#" style="color:var(--gold);text-decoration:underline">View listing →</a><br><br>🥉 <strong>Es Fum at St. Regis</strong> (Costa d\'en Blanes) — One Michelin star, elegant Mediterranean. The terrace feels like you\'re floating above the sea.' },
+      { type: 'user', text: "Bens d'Avall sounds perfect. How do I get there and do I need to book far ahead?" },
+      { type: 'bot', text: '<strong>Bens d\'Avall</strong> — great choice! 🎉<br><br>📍 It\'s on the road between Deià and Sóller (Ma-10). About 35 mins from Palma.<br><br>📅 Definitely book ahead — at least 2 weeks for a weekend table, especially for the terrace. Call +34 971 632 381.<br><br>💡 <strong>Insider tip:</strong> Request the far corner table on the terrace (table 12). Best sunset view on the island. Arrive 30 min early for drinks at the bar — the gin & tonics are excellent.<br><br>Shall I add this to your saved places?' },
+    ],
+    // Conversation 3: Renovation advice
+    [
+      { type: 'user', text: "Just bought an old finca near Artà. Want to renovate it — where do I even start?" },
+      { type: 'bot', text: 'Exciting project! Finca renovations are Mallorca\'s bread and butter. Here\'s your roadmap:<br><br>📋 <strong>Step 1: Architect</strong> — You need a local architect who knows Balearic planning rules. They\'ll assess the structure and handle the <em>licencia de obra</em> (building permit).<br><br>📋 <strong>Step 2: Permits</strong> — Artà town hall is relatively straightforward. Allow 2-4 months. Your architect handles this.<br><br>📋 <strong>Step 3: Builder</strong> — Get 3 quotes minimum. Expect €1,200-1,800/sqm for a quality renovation.<br><br>Want me to recommend some <a href="#" style="color:var(--gold);text-decoration:underline">architects</a> and <a href="#" style="color:var(--gold);text-decoration:underline">builders</a> experienced with finca renovations in the Artà area?' },
+      { type: 'user', text: 'Yes please! And roughly what budget should I expect for a 200sqm finca?' },
+      { type: 'bot', text: 'For a 200sqm finca renovation near Artà:<br><br>💰 <strong>Budget range:</strong> €240k - €360k<br>— Basic quality: €1,200/sqm = €240k<br>— Mid-range: €1,500/sqm = €300k<br>— High spec: €1,800/sqm = €360k<br><br>⚠️ Add 15-20% contingency (old fincas love surprises!)<br><br>Top architects for finca renovations:<br>• <strong>OHLAB</strong> — Award-winning, modern-meets-traditional <a href="#" style="color:var(--gold);text-decoration:underline">→</a><br>• <strong>Isla Architects</strong> — Specialist in rural Mallorca <a href="#" style="color:var(--gold);text-decoration:underline">→</a><br>• <strong>Estudio Palma</strong> — Great budget-conscious work <a href="#" style="color:var(--gold);text-decoration:underline">→</a><br><br>Timeline: typically 8-14 months including permits. Start the architect process now!' },
+    ],
+  ];
+
+  const chatBody = document.getElementById('chatBody');
+  const chatInput = document.getElementById('chatInputField');
+  const replayBtn = document.getElementById('replayBtn');
+  let currentConv = 0;
+  let isPlaying = false;
+
+  function createTypingIndicator() {
+    const div = document.createElement('div');
+    div.className = 'typing-indicator';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    div.style.cssText = 'display:flex;gap:5px;align-items:center;padding:14px 18px;background:#F0F4F8;border-radius:18px;border-bottom-left-radius:4px;width:fit-content;margin-bottom:12px;';
+    div.querySelectorAll('span').forEach((s, i) => {
+      s.style.cssText = `width:7px;height:7px;border-radius:50%;background:#B0B8C4;display:block;animation:typDot 1.4s infinite;animation-delay:${i*0.2}s;`;
+    });
+    return div;
+  }
+
+  function typeInInput(text) {
+    return new Promise(resolve => {
+      chatInput.value = '';
+      let i = 0;
+      const speed = 35 + Math.random() * 20;
+      function typeChar() {
+        if (i < text.length) {
+          chatInput.value += text[i]; i++;
+          setTimeout(typeChar, speed);
+        } else { setTimeout(resolve, 400); }
+      }
+      typeChar();
+    });
+  }
+
+  function addMessage(type, html) {
+    return new Promise(resolve => {
+      const div = document.createElement('div');
+      div.className = `msg msg-${type}`;
+      div.style.opacity = '0'; div.style.transform = 'translateY(10px)';
+      div.innerHTML = html;
+      chatBody.appendChild(div);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      requestAnimationFrame(() => {
+        div.style.transition = 'all 0.35s ease';
+        div.style.opacity = '1'; div.style.transform = 'translateY(0)';
+      });
+      setTimeout(resolve, 300);
+    });
+  }
+
+  async function playConversation(conv) {
+    if (isPlaying) return;
+    isPlaying = true;
+    replayBtn.style.display = 'none';
+    chatBody.innerHTML = '';
+    chatInput.value = '';
+
+    for (const msg of conv) {
+      if (msg.type === 'user') {
+        await typeInInput(msg.text);
+        chatInput.value = '';
+        await addMessage('user', msg.text);
+        await sleep(600);
+      } else {
+        const typing = createTypingIndicator();
+        chatBody.appendChild(typing);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        await sleep(1200 + Math.random() * 800);
+        typing.remove();
+        await addMessage('bot', msg.text);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        await sleep(800);
+      }
+    }
+    isPlaying = false;
+    replayBtn.style.display = 'inline-block';
+  }
+
+  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+  // Auto-play first conversation when section is visible
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !isPlaying) {
+      observer.disconnect();
+      setTimeout(() => playConversation(conversations[0]), 500);
+    }
+  }, { threshold: 0.3 });
+  observer.observe(document.querySelector('.chat-demo'));
+
+  // Replay cycles through conversations
+  replayBtn.addEventListener('click', () => {
+    currentConv = (currentConv + 1) % conversations.length;
+    playConversation(conversations[currentConv]);
+  });
+
+  // Add typing dot animation
+  const style = document.createElement('style');
+  style.textContent = '@keyframes typDot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}';
+  document.head.appendChild(style);
+})();
+</script>
   </div>
 </section>
 
