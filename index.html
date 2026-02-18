@@ -960,6 +960,7 @@ footer a:hover { color: var(--gold); }
     d.innerHTML='<span style="width:7px;height:7px;border-radius:50%;background:#B0B8C4;animation:hcDot 1.4s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#B0B8C4;animation:hcDot 1.4s infinite;animation-delay:0.2s"></span><span style="width:7px;height:7px;border-radius:50%;background:#B0B8C4;animation:hcDot 1.4s infinite;animation-delay:0.4s"></span>';
     body.appendChild(d);return d;
   }
+  function scrollDown(){body.scrollTop=body.scrollHeight;}
   async function play(){
     if(playing)return;playing=true;body.innerHTML='';
     for(const m of msgs){
@@ -968,14 +969,16 @@ footer a:hover { color: var(--gold); }
         const d=document.createElement('div');d.className='ai-msg ai-msg-user';
         d.style.cssText='opacity:0;transform:translateY(8px);transition:all 0.3s;';
         d.innerHTML=m.h;body.appendChild(d);
-        requestAnimationFrame(()=>{d.style.opacity='1';d.style.transform='translateY(0)';});
+        scrollDown();
+        requestAnimationFrame(()=>{d.style.opacity='1';d.style.transform='translateY(0)';scrollDown();});
         await sl(600);
       } else {
-        const dots=addDots();await sl(1500+Math.random()*700);dots.remove();
+        const dots=addDots();scrollDown();await sl(1500+Math.random()*700);dots.remove();
         const d=document.createElement('div');d.className='ai-msg ai-msg-bot';
         d.style.cssText='opacity:0;transform:translateY(8px);transition:all 0.3s;';
         d.innerHTML=m.h;body.appendChild(d);
-        requestAnimationFrame(()=>{d.style.opacity='1';d.style.transform='translateY(0)';});
+        scrollDown();
+        requestAnimationFrame(()=>{d.style.opacity='1';d.style.transform='translateY(0)';scrollDown();});
         await sl(1000);
       }
     }

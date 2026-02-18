@@ -273,8 +273,9 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
       requestAnimationFrame(() => {
         div.style.transition = 'all 0.35s ease';
         div.style.opacity = '1'; div.style.transform = 'translateY(0)';
+        chatBody.scrollTop = chatBody.scrollHeight;
       });
-      setTimeout(resolve, 300);
+      setTimeout(() => { chatBody.scrollTop = chatBody.scrollHeight; resolve(); }, 400);
     });
   }
 
