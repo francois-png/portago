@@ -51,11 +51,15 @@ nav a:hover{color:var(--gold)}
 .area-section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
 .area-section-header a{font-size:13px;color:var(--gold);text-decoration:none;font-weight:500;text-transform:uppercase;letter-spacing:0.5px}
 .mini-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
-.mini-card{display:flex;gap:16px;background:white;border-radius:14px;padding:16px;border:1px solid rgba(201,169,110,0.1);box-shadow:0 2px 12px rgba(44,36,24,0.04);transition:all 0.3s;text-decoration:none;color:inherit}
-.mini-card:hover{box-shadow:0 8px 30px rgba(44,36,24,0.1);transform:translateY(-2px)}
-.mini-card img{width:72px;height:72px;object-fit:cover;border-radius:10px;flex-shrink:0}
-.mini-card h4{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--warm-dark);margin-bottom:4px}
-.mini-card .meta{font-size:12px;color:var(--text-light)}
+.mini-card{background:white;border-radius:var(--radius);overflow:hidden;border:1px solid rgba(201,169,110,0.1);box-shadow:0 2px 12px rgba(44,36,24,0.04);transition:all 0.4s;text-decoration:none;color:inherit}
+.mini-card:hover{box-shadow:0 12px 40px rgba(44,36,24,0.12);transform:translateY(-4px)}
+.mini-card img{width:100%;height:160px;object-fit:cover;transition:transform 0.6s}
+.mini-card:hover img{transform:scale(1.06)}
+.mini-card .card-body{padding:16px}
+.mini-card h4{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--warm-dark);margin-bottom:6px}
+.mini-card .meta{font-size:13px;color:var(--text-light);display:flex;gap:8px;align-items:center}
+.mini-card .meta .rating{color:var(--gold);font-weight:600}
+.area-section-header h2{font-size:28px}
 
 /* Quotes */
 .quotes-section{background:var(--cream);border-radius:var(--radius);padding:48px;margin-bottom:60px}
@@ -166,25 +170,25 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   <!-- Restaurants -->
   <div class="area-section">
     <div class="area-section-header">
-      <h2 class="section-title" style="margin-bottom:0">🍽️ Restaurants & Dining</h2>
-      <a href="category-page.html">View all →</a>
+      <h2 class="section-title" style="margin-bottom:0">Restaurants & Dining</h2>
+      <a href="category-page.html" class="feat-link">View all →</a>
     </div>
     <div class="mini-grid">
       <a href="listing-page.html" class="mini-card">
-        <img src="https://images.unsplash.com/photo-1664813733654-7a53943594bc?w=200&q=80" alt="Zaranda">
-        <div><h4>Zaranda — Es Princep</h4><div class="meta">⭐ 4.9 · Fine Dining · €€€€</div></div>
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80" alt="Zaranda">
+        <div class="card-body"><h4>Zaranda — Es Princep</h4><div class="meta"><span class="rating">4.9</span> Fine Dining · €€€€</div></div>
       </a>
       <a href="#" class="mini-card">
-        <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=200&q=80" alt="Marc Fosh">
-        <div><h4>Marc Fosh</h4><div class="meta">⭐ 4.8 · Mediterranean · €€€</div></div>
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80" alt="Marc Fosh">
+        <div class="card-body"><h4>Marc Fosh</h4><div class="meta"><span class="rating">4.8</span> Mediterranean · €€€</div></div>
       </a>
       <a href="#" class="mini-card">
-        <img src="https://images.unsplash.com/photo-1545579133-99bb5ab189bd?w=200&q=80" alt="DINS">
-        <div><h4>DINS Santi Taura</h4><div class="meta">⭐ 4.9 · Mallorcan · €€€€</div></div>
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80" alt="DINS">
+        <div class="card-body"><h4>DINS Santi Taura</h4><div class="meta"><span class="rating">4.9</span> Mallorcan · €€€€</div></div>
       </a>
       <a href="#" class="mini-card">
-        <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=200&q=80" alt="Aromata">
-        <div><h4>Aromata</h4><div class="meta">⭐ 4.7 · Creative · €€€</div></div>
+        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Aromata">
+        <div class="card-body"><h4>Aromata</h4><div class="meta"><span class="rating">4.7</span> Creative · €€€</div></div>
       </a>
     </div>
   </div>
@@ -192,21 +196,21 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   <!-- Property -->
   <div class="area-section">
     <div class="area-section-header">
-      <h2 class="section-title" style="margin-bottom:0">🏡 Property & Real Estate</h2>
-      <a href="#">View all →</a>
+      <h2 class="section-title" style="margin-bottom:0">Property & Real Estate</h2>
+      <a href="#" class="feat-link">View all →</a>
     </div>
     <div class="mini-grid">
       <a href="#" class="mini-card">
-        <img src="https://images.unsplash.com/photo-1602361427267-c5395584b411?w=200&q=80" alt="Engel">
-        <div><h4>Engel & Völkers Palma</h4><div class="meta">⭐ 4.7 · Luxury Agents</div></div>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Engel">
+        <div class="card-body"><h4>Engel & Völkers Palma</h4><div class="meta"><span class="rating">4.7</span> Luxury Agents</div></div>
       </a>
       <a href="#" class="mini-card">
-        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=200&q=80" alt="Baxter">
-        <div><h4>Baxter Estates</h4><div class="meta">⭐ 4.8 · Premium Property</div></div>
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&q=80" alt="Baxter">
+        <div class="card-body"><h4>Baxter Estates</h4><div class="meta"><span class="rating">4.8</span> Premium Property</div></div>
       </a>
       <a href="#" class="mini-card">
-        <img src="https://images.unsplash.com/photo-1414432667065-fbbcad756703?w=200&q=80" alt="Mallorca Sotheby's">
-        <div><h4>Mallorca Sotheby's</h4><div class="meta">⭐ 4.9 · Luxury Estates</div></div>
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Mallorca Sotheby's">
+        <div class="card-body"><h4>Mallorca Sotheby's</h4><div class="meta"><span class="rating">4.9</span> Luxury Estates</div></div>
       </a>
     </div>
   </div>
@@ -214,17 +218,17 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
   <!-- Wellness -->
   <div class="area-section">
     <div class="area-section-header">
-      <h2 class="section-title" style="margin-bottom:0">• Wellness & Health</h2>
-      <a href="#">View all →</a>
+      <h2 class="section-title" style="margin-bottom:0">Wellness & Health</h2>
+      <a href="#" class="feat-link">View all →</a>
     </div>
     <div class="mini-grid">
       <a href="#" class="mini-card">
-        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=200&q=80" alt="Purohotel Spa">
-        <div><h4>Purohotel Urban Spa</h4><div class="meta">⭐ 4.6 · Day Spa · $$</div></div>
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80" alt="Purohotel Spa">
+        <div class="card-body"><h4>Purohotel Urban Spa</h4><div class="meta"><span class="rating">4.6</span> Day Spa · €€</div></div>
       </a>
       <a href="#" class="mini-card">
-        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=200&q=80" alt="Yoga">
-        <div><h4>Palma Yoga Shala</h4><div class="meta">⭐ 4.8 · Yoga Studio</div></div>
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&q=80" alt="Yoga">
+        <div class="card-body"><h4>Palma Yoga Shala</h4><div class="meta"><span class="rating">4.8</span> Yoga Studio</div></div>
       </a>
     </div>
   </div>
