@@ -91,7 +91,9 @@ nav a:hover{color:var(--gold)}
 .how-note strong{color:var(--warm-dark);font-weight:600}
 
 /* === WHO IT'S FOR === */
-.who{padding:100px 40px;background:var(--warm-white)}
+.who{padding:100px 40px;background:var(--warm-white);position:relative;overflow:hidden}
+.who-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4;z-index:0}
+.who>*:not(.who-video){position:relative;z-index:1}
 .who-header{text-align:center;max-width:660px;margin:0 auto 64px}
 .who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:1000px;margin:0 auto}
 .who-card{background:var(--cream);border-radius:var(--radius);padding:40px;border:1px solid rgba(201,169,110,0.1);transition:all 0.3s}
@@ -463,6 +465,9 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
 
 <!-- ============ WHO IT'S FOR ============ -->
 <section class="who">
+  <video class="who-video" autoplay muted loop playsinline>
+    <source src="assets/portago-sailboat-bg.mp4" type="video/mp4">
+  </video>
   <div class="who-header">
     <div class="section-tag">Who It's For</div>
     <h2 class="section-title">Built for anyone navigating island life</h2>
