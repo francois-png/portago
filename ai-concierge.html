@@ -177,11 +177,11 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
       <h1>Your personal <em>Mallorca</em> concierge, available 24/7</h1>
       <p class="subtitle">Ask anything about life on the island — restaurant recommendations, property advice, school comparisons, legal guidance, event planning — and get instant, personalised answers from an AI that knows Mallorca inside out.</p>
       <div class="hero-cta-row">
-        <a href="#" class="cta-primary">Try the Concierge Free →</a>
+        <a href="#" class="cta-primary" onclick="openWaitlist();return false;">Join the Launch →</a>
         <a href="#pricing" class="cta-secondary">See pricing</a>
       </div>
       <div class="hero-proof">
-        <span>✓ No signup required for free tier</span>
+        <span>✓ Launching soon — join the waitlist</span>
         <span>✓ 2,400+ businesses indexed</span>
         <span>✓ Updated daily</span>
       </div>
@@ -449,7 +449,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
         <li><span class="cross">—</span> Property comparisons</li>
         <li><span class="cross">—</span> Priority response time</li>
       </ul>
-      <button class="price-btn price-btn-secondary">Get Started Free</button>
+      <button class="price-btn price-btn-secondary" onclick="openWaitlist()">Join the Waitlist</button>
     </div>
     <div class="price-card featured">
       <div class="price-name">Resident</div>
@@ -466,7 +466,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
         <li><span class="check">✓</span> Construction & renovation advice</li>
         <li><span class="check">✓</span> Priority response • Saved history</li>
       </ul>
-      <button class="price-btn price-btn-primary">Start 7-Day Free Trial</button>
+      <button class="price-btn price-btn-primary" onclick="openWaitlist()">Join the Launch →</button>
     </div>
   </div>
 </section>
@@ -541,9 +541,9 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
 
 <!-- FINAL CTA -->
 <section class="final-cta">
-  <h2>Ready to discover Mallorca<br>like a local?</h2>
-  <p>Join thousands of residents and future residents who use the Portago AI Concierge to navigate island life with confidence.</p>
-  <a href="#" class="cta-primary">Try the Concierge Free →</a>
+  <h2>Be first to experience<br>the future of island living</h2>
+  <p>The AI Concierge is launching soon. Join the waitlist to be first in line — early supporters get exclusive perks and lifetime pricing.</p>
+  <a href="#" class="cta-primary" onclick="openWaitlist();return false;">Join the Launch →</a>
 </section>
 
 <footer>
@@ -554,5 +554,61 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:40px}
 </footer>
 
 
+<!-- WAITLIST MODAL -->
+<div id="waitlistModal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:24px;max-width:480px;width:90%;padding:48px;text-align:center;position:relative;box-shadow:0 25px 80px rgba(0,0,0,0.3);">
+    <button onclick="closeWaitlist()" style="position:absolute;top:16px;right:20px;background:none;border:none;font-size:24px;cursor:pointer;color:#8A7E6E;">×</button>
+    <div style="font-size:40px;margin-bottom:16px;">🏝️</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:28px;color:#2C2418;margin-bottom:8px;">Join the Launch</h2>
+    <p style="font-size:15px;color:#8A7E6E;line-height:1.7;margin-bottom:28px;">Be the first to experience the Portago AI Concierge. We'll notify you as soon as it's live — plus early supporters get exclusive perks.</p>
+    <form id="waitlistForm" onsubmit="submitWaitlist(event)">
+      <input id="wl-name" type="text" placeholder="Your name" required style="width:100%;padding:14px 20px;border:1px solid #F0E6D3;border-radius:12px;font-size:15px;font-family:'Inter',sans-serif;margin-bottom:12px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#F0E6D3'">
+      <input id="wl-email" type="email" placeholder="Your email" required style="width:100%;padding:14px 20px;border:1px solid #F0E6D3;border-radius:12px;font-size:15px;font-family:'Inter',sans-serif;margin-bottom:12px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#F0E6D3'">
+      <select id="wl-interest" style="width:100%;padding:14px 20px;border:1px solid #F0E6D3;border-radius:12px;font-size:15px;font-family:'Inter',sans-serif;margin-bottom:20px;outline:none;color:#8A7E6E;background:white;box-sizing:border-box;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#F0E6D3'">
+        <option value="">What interests you most?</option>
+        <option value="restaurants">Restaurant recommendations</option>
+        <option value="property">Property & area advice</option>
+        <option value="schools">Schools & education</option>
+        <option value="relocation">Moving to Mallorca</option>
+        <option value="legal">Legal & tax guidance</option>
+        <option value="lifestyle">Lifestyle & events</option>
+        <option value="construction">Construction & renovation</option>
+        <option value="everything">All of the above!</option>
+      </select>
+      <button type="submit" style="width:100%;padding:16px;background:linear-gradient(135deg,#C9A96E 0%,#C4703F 100%);color:white;border:none;border-radius:100px;font-size:16px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.3s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(201,169,110,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">Join the Waitlist →</button>
+    </form>
+    <p style="font-size:12px;color:#B0A898;margin-top:16px;">No spam, ever. Just launch updates and early access.</p>
+    <!-- Success state -->
+    <div id="waitlistSuccess" style="display:none;">
+      <div style="font-size:48px;margin-bottom:16px;">🎉</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:#2C2418;margin-bottom:8px;">You're on the list!</h3>
+      <p style="font-size:15px;color:#8A7E6E;line-height:1.7;">We'll be in touch soon. In the meantime, explore the directory and discover what Mallorca has to offer.</p>
+      <a href="index.html" style="display:inline-block;margin-top:20px;padding:12px 28px;background:#2C2418;color:white;border-radius:100px;text-decoration:none;font-size:14px;font-weight:600;">Explore the Directory</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function openWaitlist(){
+  const m=document.getElementById('waitlistModal');
+  m.style.display='flex';
+  document.getElementById('waitlistForm').style.display='block';
+  document.getElementById('waitlistSuccess').style.display='none';
+}
+function closeWaitlist(){document.getElementById('waitlistModal').style.display='none';}
+document.getElementById('waitlistModal').addEventListener('click',function(e){if(e.target===this)closeWaitlist();});
+function submitWaitlist(e){
+  e.preventDefault();
+  const data={name:document.getElementById('wl-name').value,email:document.getElementById('wl-email').value,interest:document.getElementById('wl-interest').value,source:'ai-concierge',timestamp:new Date().toISOString()};
+  // Store in localStorage as backup
+  const existing=JSON.parse(localStorage.getItem('portago_waitlist')||'[]');
+  existing.push(data);
+  localStorage.setItem('portago_waitlist',JSON.stringify(existing));
+  // Show success
+  document.getElementById('waitlistForm').style.display='none';
+  document.getElementById('waitlistSuccess').style.display='block';
+  console.log('Waitlist signup:',data);
+}
+</script>
 </body>
 </html>
