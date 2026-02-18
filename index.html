@@ -1229,7 +1229,7 @@ footer a:hover { color: var(--gold); }
     msgs.appendChild(d);
     msgs.scrollTop=msgs.scrollHeight;
   }
-
+  function delay(fn,ms){setTimeout(fn,ms);}
   function showOpts(options){
     opts.innerHTML='';
     options.forEach(function(o){
@@ -1240,9 +1240,8 @@ footer a:hover { color: var(--gold); }
       opts.appendChild(b);
     });
   }
-
   function clearOpts(){opts.innerHTML='';}
-  function showInput(ph){inputRow.classList.add('show');input.placeholder=ph||'Type here...';input.focus();}
+  function showInput(ph){inputRow.classList.add('show');input.placeholder=ph||'';input.focus();}
   function hideInput(){inputRow.classList.remove('show');}
 
   window.pcSendInput=function(){
@@ -1250,111 +1249,193 @@ footer a:hover { color: var(--gold); }
     if(!v)return;
     addMsg(v,'user');
     input.value='';
+
     if(flow==='waitlist_email'){
       hideInput();clearOpts();
-      setTimeout(function(){
-        addMsg("You're on the list! We'll notify you as soon as the AI Concierge launches. Welcome to Portago.","bot");
-        setTimeout(function(){
-          showOpts([{label:'Start over',action:startChat}]);
-        },500);
+      delay(function(){
+        addMsg("Wonderful — you're in. We'll send you a personal invitation the moment our AI Concierge goes live.","bot");
+        delay(function(){
+          addMsg("In the meantime, feel free to explore our directory. There's so much to discover.","bot");
+          delay(function(){showOpts([{label:'Back to the beginning',action:startChat}]);},800);
+        },1000);
+      },900);
+
+    } else if(flow==='visitor_interest'){
+      collecting.interest=v;
+      delay(function(){
+        addMsg("Lovely — that's exactly the kind of thing our AI Concierge will be able to help with. Personalised recommendations, curated just for you.","bot");
+        delay(function(){
+          addMsg("We're launching very soon. If you'd like early access, I just need your email and we'll make sure you're first in line.","bot");
+          flow='waitlist_email';
+          showInput('Your email address');
+        },1000);
       },800);
+
     } else if(flow==='biz_name'){
       collecting.name=v;
       flow='biz_contact';
-      setTimeout(function(){addMsg("Great! And your name?","bot");},400);
+      delay(function(){
+        addMsg("Lovely. And who should we be in touch with? Just your first name is fine.","bot");
+      },700);
+
     } else if(flow==='biz_contact'){
       collecting.contact=v;
       flow='biz_email';
-      setTimeout(function(){addMsg("What's the best email to reach you?","bot");},400);
+      delay(function(){
+        addMsg("Thank you, "+v+". And what's the best email to reach you on?","bot");
+      },700);
+
     } else if(flow==='biz_email'){
       collecting.email=v;
       flow='biz_category';
       hideInput();
-      setTimeout(function(){
-        addMsg("What type of business are you?","bot");
+      delay(function(){
+        addMsg("Nearly there. What best describes your business?","bot");
         showOpts([
-          {label:'Restaurant / Bar',action:function(){bizCat('Restaurant')}},
-          {label:'Property / Architecture',action:function(){bizCat('Property')}},
-          {label:'Wellness / Health',action:function(){bizCat('Wellness')}},
-          {label:'Other',action:function(){bizCat('Other')}}
+          {label:'Dining & Hospitality',action:function(){bizCat('Dining & Hospitality')}},
+          {label:'Property & Design',action:function(){bizCat('Property & Design')}},
+          {label:'Wellness & Lifestyle',action:function(){bizCat('Wellness & Lifestyle')}},
+          {label:'Services & Retail',action:function(){bizCat('Services & Retail')}},
+          {label:'Something else entirely',action:function(){bizCat('Other')}}
         ]);
-      },400);
+      },700);
     }
   };
 
   function bizCat(cat){
     collecting.category=cat;
     addMsg(cat,'user');clearOpts();
-    setTimeout(function(){
-      addMsg("Perfect! <strong>"+collecting.name+"</strong> is now on our list. We'll be in touch shortly to get you set up — completely free.","bot");
-      addMsg("Welcome to Portago!","bot");
-      setTimeout(function(){
-        showOpts([{label:'Start over',action:startChat}]);
-      },500);
-    },600);
+    delay(function(){
+      addMsg("Wonderful. We'll have someone from our team reach out to <strong>"+collecting.contact+"</strong> shortly to get <strong>"+collecting.name+"</strong> set up on Portago.","bot");
+      delay(function(){
+        addMsg("We're genuinely excited to have you as part of the Mallorca community we're building. Thank you for your time.","bot");
+        delay(function(){showOpts([{label:'Back to the beginning',action:startChat}]);},800);
+      },1000);
+    },800);
   }
 
   function startChat(){
     msgs.innerHTML='';clearOpts();hideInput();collecting={};flow='';
-    setTimeout(function(){
-      addMsg("Welcome to Portago — your guide to the best of Mallorca. How can I help?","bot");
-      setTimeout(function(){
-        showOpts([
-          {label:"I'm looking for something in Mallorca",action:visitorFlow},
-          {label:"I'd like to list my business",action:bizFlow},
-          {label:"Tell me about Portago",action:aboutFlow}
-        ]);
-      },400);
-    },300);
+    delay(function(){
+      addMsg("Hello — welcome to Portago.","bot");
+      delay(function(){
+        addMsg("I'm here to help you discover the very best of Mallorca, or to learn a little more about how we can work together. What brings you here today?","bot");
+        delay(function(){
+          showOpts([
+            {label:"I'm exploring Mallorca",action:visitorFlow},
+            {label:"I have a business on the island",action:bizFlow},
+            {label:"I'd like to know more about Portago",action:aboutFlow}
+          ]);
+        },600);
+      },900);
+    },400);
   }
 
   function visitorFlow(){
-    addMsg("I'm looking for something in Mallorca","user");clearOpts();
-    setTimeout(function(){
-      addMsg("We're building Mallorca's most comprehensive lifestyle directory — with an AI concierge that gives personalised recommendations.","bot");
-      setTimeout(function(){
-        addMsg("Join our waitlist and be the first to try it. What's your email?","bot");
-        flow='waitlist_email';
-        showInput('Your email address');
-      },600);
-    },500);
+    addMsg("I'm exploring Mallorca","user");clearOpts();
+    delay(function(){
+      addMsg("How wonderful. Whether you're settling in or just visiting, Mallorca has a way of making you feel at home.","bot");
+      delay(function(){
+        addMsg("We're building something rather special — a curated directory of the island's finest restaurants, wellness spaces, services, and hidden gems, paired with a personal AI Concierge that learns what you love.","bot");
+        delay(function(){
+          addMsg("May I ask — what are you most interested in finding on the island?","bot");
+          flow='visitor_interest';
+          showInput('e.g. a quiet restaurant in Deià, a good yoga studio...');
+        },1000);
+      },1200);
+    },800);
   }
 
   function bizFlow(){
-    addMsg("I'd like to list my business","user");clearOpts();
-    setTimeout(function(){
-      addMsg("Brilliant! Listing on Portago is completely free. You'll be discoverable to thousands of residents and visitors across Mallorca.","bot");
-      setTimeout(function(){
-        addMsg("Let's get you started — what's your business name?","bot");
-        flow='biz_name';
-        showInput('Your business name');
-      },600);
-    },500);
+    addMsg("I have a business on the island","user");clearOpts();
+    delay(function(){
+      addMsg("That's wonderful to hear — Mallorca's business community is truly something special.","bot");
+      delay(function(){
+        addMsg("Portago connects your business with discerning residents, newcomers, and visitors who are actively looking for quality. We handle the visibility — you focus on what you do best.","bot");
+        delay(function(){
+          showOpts([
+            {label:"Tell me more about how it works",action:bizMore},
+            {label:"I'd like to get started",action:bizStart}
+          ]);
+        },800);
+      },1200);
+    },800);
+  }
+
+  function bizMore(){
+    addMsg("Tell me more about how it works","user");clearOpts();
+    delay(function(){
+      addMsg("Of course. Your business gets a beautifully designed listing on Portago — complete with photos, your story, contact details, and reviews. You'll appear in our curated search, area guides, and category pages.","bot");
+      delay(function(){
+        addMsg("We also have an AI Concierge launching soon that will personally recommend your business to people based on their preferences. Think of it as a trusted local friend, always pointing people your way.","bot");
+        delay(function(){
+          addMsg("Shall we get you set up? It only takes a moment.","bot");
+          showOpts([
+            {label:"Yes, let's do it",action:bizStart},
+            {label:"Maybe later",action:function(){
+              addMsg("Maybe later","user");clearOpts();
+              delay(function(){
+                addMsg("No rush at all. When you're ready, we'll be here. Feel free to explore the directory in the meantime — you might spot some familiar neighbours.","bot");
+                delay(function(){showOpts([{label:'Back to the beginning',action:startChat}]);},800);
+              },700);
+            }}
+          ]);
+        },1000);
+      },1200);
+    },800);
+  }
+
+  function bizStart(){
+    addMsg("I'd like to get started","user");clearOpts();
+    delay(function(){
+      addMsg("Lovely — this will only take a moment. Let's start with the basics. What's the name of your business?","bot");
+      flow='biz_name';
+      showInput('Your business name');
+    },700);
   }
 
   function aboutFlow(){
-    addMsg("Tell me about Portago","user");clearOpts();
-    setTimeout(function(){
-      addMsg("Portago is the definitive lifestyle directory for Mallorca. We curate the best restaurants, services, wellness, property, and more — all in one beautiful place.","bot");
-      setTimeout(function(){
-        addMsg("Our AI Concierge (launching soon) will give you personalised recommendations based on your preferences.","bot");
-        setTimeout(function(){
-          showOpts([
-            {label:"Join the waitlist",action:visitorFlow},
-            {label:"List my business",action:bizFlow}
-          ]);
-        },500);
-      },800);
-    },500);
+    addMsg("I'd like to know more about Portago","user");clearOpts();
+    delay(function(){
+      addMsg("Portago is Mallorca's lifestyle directory — a beautifully curated guide to the island's best restaurants, wellness spaces, architects, schools, marinas, and so much more.","bot");
+      delay(function(){
+        addMsg("We believe that finding the right places should feel effortless. Whether you've just arrived or you've been here for years, there's always something new to discover.","bot");
+        delay(function(){
+          addMsg("We're also building a personal AI Concierge — imagine having a knowledgeable local friend who knows exactly what you'd love, available whenever you need a recommendation.","bot");
+          delay(function(){
+            showOpts([
+              {label:"That sounds lovely — I'd like early access",action:waitlistDirect},
+              {label:"I run a business here",action:bizFlow},
+              {label:"Just browsing for now",action:function(){
+                addMsg("Just browsing for now","user");clearOpts();
+                delay(function(){
+                  addMsg("Of course — take your time. The directory is yours to explore. If you ever need anything, I'm right here.","bot");
+                  delay(function(){showOpts([{label:'Back to the beginning',action:startChat}]);},800);
+                },700);
+              }}
+            ]);
+          },1000);
+        },1200);
+      },1200);
+    },800);
   }
 
-  // Auto-open after 8 seconds on first visit
+  function waitlistDirect(){
+    addMsg("I'd like early access","user");clearOpts();
+    delay(function(){
+      addMsg("How lovely. We'd be delighted to have you. Just leave your email and we'll send you a personal invitation as soon as we launch.","bot");
+      flow='waitlist_email';
+      showInput('Your email address');
+    },700);
+  }
+
+  // Auto-open after 10 seconds on first visit
   setTimeout(function(){
     if(!open && !sessionStorage.getItem('pc_seen')){
       pcToggle();
       sessionStorage.setItem('pc_seen','1');
     }
-  },8000);
+  },10000);
 })();
 </script>
 
