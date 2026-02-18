@@ -490,6 +490,8 @@ footer a:hover { color: var(--gold); }
 .ai-chat-mock {
   background: white; border-radius: 20px;
   width: 100%; max-width: 420px;
+  height: 480px;
+  display: flex; flex-direction: column;
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   overflow: hidden;
 }
@@ -937,7 +939,7 @@ footer a:hover { color: var(--gold); }
           <div class="ai-chat-dot"></div>
           <span>Portago AI Concierge</span>
         </div>
-        <div id="homeChatBody" style="padding:8px;"></div>
+        <div id="homeChatBody" style="padding:8px;flex:1;overflow-y:auto;scroll-behavior:smooth;"></div>
       </div>
     </div>
 
