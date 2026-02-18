@@ -43,7 +43,7 @@ header {
   border-bottom: 1px solid rgba(201,169,110,0.15);
   transition: all 0.3s ease;
 }
-.logo {
+.logo { text-decoration: none;
   font-family: 'Playfair Display', serif;
   font-size: 28px; font-weight: 700;
   color: var(--warm-dark);
@@ -310,7 +310,7 @@ section { padding: 100px 40px; }
   margin-top: 4px; letter-spacing: 0.5px;
 }
 .lb-image {
-  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=960&q=80') center/cover;
+  background: url('https://images.unsplash.com/photo-1599533078316-657de79ea89f?w=960&q=80') center/cover;
 }
 
 /* ===== AREA GUIDES ===== */
@@ -411,7 +411,7 @@ footer {
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 40px; margin-bottom: 40px;
 }
-.footer-brand .logo { font-size: 24px; margin-bottom: 12px; color: white; }
+.footer-brand .logo { text-decoration: none; font-size: 24px; margin-bottom: 12px; color: white; }
 .footer-brand .logo span { color: var(--gold); }
 .footer-brand p { font-size: 14px; line-height: 1.7; font-weight: 300; }
 footer h4 {
@@ -609,15 +609,15 @@ footer a:hover { color: var(--gold); }
 
 <!-- HEADER -->
 <header>
-  <div class="logo">Portago<span>.</span></div>
+  <a href="index.html" class="logo">Portago<span>.</span></a>
   <nav>
-    <a href="#">Discover</a>
-    <a href="#">Areas</a>
-    <a href="#">Lifestyle</a>
-    <a href="#">Property</a>
-    <a href="#">Blog</a>
-    <a href="#ai-agent">AI Concierge</a>
-    <a href="#" class="nav-cta">List Your Business</a>
+    <a href="index.html">Discover</a>
+    <a href="area-guide.html">Areas</a>
+    <a href="category-page.html">Lifestyle</a>
+    <a href="search-results.html?q=property">Property</a>
+    <a href="blog-post.html">Blog</a>
+    <a href="ai-concierge.html">AI Concierge</a>
+    <a href="listing-page.html" class="nav-cta">List Your Business</a>
   </nav>
 </header>
 
@@ -636,17 +636,17 @@ footer a:hover { color: var(--gold); }
       <button class="search-btn">Explore</button>
     </div>
     <div class="hero-cats">
-      <a href="#">Restaurants</a>
+      <a href="category-page.html">Restaurants</a>
       <a href="#">•</a>
-      <a href="#">Architecture</a>
+      <a href="category-page.html">Architecture</a>
       <a href="#">•</a>
-      <a href="#">Wellness</a>
+      <a href="category-page.html">Wellness</a>
       <a href="#">•</a>
-      <a href="#">Property</a>
+      <a href="search-results.html?q=property">Property</a>
       <a href="#">•</a>
-      <a href="#">Schools</a>
+      <a href="category-page.html">Schools</a>
       <a href="#">•</a>
-      <a href="#">Marinas</a>
+      <a href="category-page.html">Marinas</a>
     </div>
   </div>
 </section>
@@ -660,7 +660,7 @@ footer a:hover { color: var(--gold); }
   </div>
   <div class="cat-grid">
     <div class="cat-card">
-      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Dining">
+      <img src="https://images.unsplash.com/photo-1519067438913-7aab3bff2281?w=600&q=80" alt="Dining">
       <div class="cat-card-overlay">
         <h3>Dining & Restaurants</h3>
         <p>Fine dining to hidden chiringuitos</p>
@@ -668,7 +668,7 @@ footer a:hover { color: var(--gold); }
       <span class="cat-count">240+ listings</span>
     </div>
     <div class="cat-card">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Property">
+      <img src="https://images.unsplash.com/photo-1602361427267-c5395584b411?w=600&q=80" alt="Property">
       <div class="cat-card-overlay">
         <h3>Property & Real Estate</h3>
         <p>Agents, developers & interior design</p>
@@ -676,7 +676,7 @@ footer a:hover { color: var(--gold); }
       <span class="cat-count">180+ listings</span>
     </div>
     <div class="cat-card">
-      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80" alt="Wellness">
+      <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80" alt="Wellness">
       <div class="cat-card-overlay">
         <h3>Wellness & Health</h3>
         <p>Spas, clinics, yoga & fitness</p>
@@ -692,7 +692,7 @@ footer a:hover { color: var(--gold); }
       <span class="cat-count">90+ listings</span>
     </div>
     <div class="cat-card">
-      <img src="https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=600&q=80" alt="Marina">
+      <img src="https://images.unsplash.com/photo-1752913552418-4465bd6996e2?w=600&q=80" alt="Marina">
       <div class="cat-card-overlay">
         <h3>Marinas & Boating</h3>
         <p>Charters, moorings & yacht services</p>
@@ -700,7 +700,7 @@ footer a:hover { color: var(--gold); }
       <span class="cat-count">65+ listings</span>
     </div>
     <div class="cat-card">
-      <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="Schools">
+      <img src="https://images.unsplash.com/photo-1414432667065-fbbcad756703?w=600&q=80" alt="Schools">
       <div class="cat-card-overlay">
         <h3>Schools & Education</h3>
         <p>International schools & academies</p>
@@ -717,12 +717,12 @@ footer a:hover { color: var(--gold); }
       <div class="section-tag">Editor's Picks</div>
       <h2 class="section-title">Featured this week</h2>
     </div>
-    <a href="#" class="feat-link">View all →</a>
+    <a href="category-page.html" class="feat-link">View all →</a>
   </div>
   <div class="feat-grid">
     <div class="feat-card">
       <div class="feat-img">
-        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Restaurant">
+        <img src="https://images.unsplash.com/photo-1664813733654-7a53943594bc?w=600&q=80" alt="Restaurant">
         <span class="feat-badge">Featured</span>
       </div>
       <div class="feat-body">
@@ -742,7 +742,7 @@ footer a:hover { color: var(--gold); }
     </div>
     <div class="feat-card">
       <div class="feat-img">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Architecture">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80" alt="Architecture">
         <span class="feat-badge">Featured</span>
       </div>
       <div class="feat-body">
@@ -814,27 +814,27 @@ footer a:hover { color: var(--gold); }
   </div>
   <div class="area-scroll">
     <div class="area-card">
-      <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=480&q=80" alt="Palma">
+      <img src="https://images.unsplash.com/photo-1629537744044-04a035cbf675?w=480&q=80" alt="Palma">
       <div class="area-card-info"><h4>Palma de Mallorca</h4><span>The cosmopolitan heart</span></div>
     </div>
     <div class="area-card">
-      <img src="https://images.unsplash.com/photo-1504019347908-b45f9b0b8dd5?w=480&q=80" alt="Deia">
+      <img src="https://images.unsplash.com/photo-1631724813552-aee57e1d97cf?w=480&q=80" alt="Deia">
       <div class="area-card-info"><h4>Deià</h4><span>Artists' mountain village</span></div>
     </div>
     <div class="area-card">
-      <img src="https://images.unsplash.com/photo-1534235826754-0a3572d1d6d5?w=480&q=80" alt="Sóller">
+      <img src="https://images.unsplash.com/photo-1629301057724-536804f557f9?w=480&q=80" alt="Sóller">
       <div class="area-card-info"><h4>Sóller</h4><span>Valley of oranges</span></div>
     </div>
     <div class="area-card">
-      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=480&q=80" alt="Pollença">
+      <img src="https://images.unsplash.com/photo-1602085337677-2bd838a4f880?w=480&q=80" alt="Pollença">
       <div class="area-card-info"><h4>Pollença</h4><span>Northern charm</span></div>
     </div>
     <div class="area-card">
-      <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=480&q=80" alt="Alaró">
+      <img src="https://images.unsplash.com/photo-1623690105020-9ece96a71ff5?w=480&q=80" alt="Alaró">
       <div class="area-card-info"><h4>Alaró</h4><span>Mountain village life</span></div>
     </div>
     <div class="area-card">
-      <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=480&q=80" alt="Santanyi">
+      <img src="https://images.unsplash.com/photo-1708165089726-a40d71cba16c?w=480&q=80" alt="Santanyi">
       <div class="area-card-info"><h4>Santanyí</h4><span>Golden stone, crystal waters</span></div>
     </div>
   </div>
@@ -929,8 +929,8 @@ footer a:hover { color: var(--gold); }
         </div>
       </div>
       <div class="ai-cta-row">
-        <a href="#" class="ai-cta-btn">Try the AI Concierge →</a>
-        <a href="#" class="ai-cta-link">Learn more about how it works</a>
+        <a href="ai-concierge.html" class="ai-cta-btn">Try the AI Concierge →</a>
+        <a href="ai-concierge.html" class="ai-cta-link">Learn more about how it works</a>
       </div>
     </div>
     <div class="ai-visual">
@@ -1001,7 +1001,7 @@ footer a:hover { color: var(--gold); }
       <div class="section-tag">From the Blog</div>
       <h2 class="section-title">Stories, guides & insights</h2>
     </div>
-    <a href="#" class="feat-link">All articles →</a>
+    <a href="blog-post.html" class="feat-link">All articles →</a>
   </div>
   <div class="blog-grid">
     <div class="blog-card blog-card-large">
@@ -1013,7 +1013,7 @@ footer a:hover { color: var(--gold); }
       </div>
     </div>
     <div class="blog-card">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Property">
+      <img src="https://images.unsplash.com/photo-1602361427267-c5395584b411?w=600&q=80" alt="Property">
       <div class="blog-card-overlay">
         <span class="blog-tag">Property</span>
         <h3>Foreign Buyer's Guide to Mallorca 2026</h3>
@@ -1021,7 +1021,7 @@ footer a:hover { color: var(--gold); }
       </div>
     </div>
     <div class="blog-card">
-      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Food">
+      <img src="https://images.unsplash.com/photo-1519067438913-7aab3bff2281?w=600&q=80" alt="Food">
       <div class="blog-card-overlay">
         <span class="blog-tag">Dining</span>
         <h3>10 Hidden Restaurants Only Locals Know</h3>
@@ -1029,7 +1029,7 @@ footer a:hover { color: var(--gold); }
       </div>
     </div>
     <div class="blog-card">
-      <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="Schools">
+      <img src="https://images.unsplash.com/photo-1414432667065-fbbcad756703?w=600&q=80" alt="Schools">
       <div class="blog-card-overlay">
         <span class="blog-tag">Education</span>
         <h3>International Schools Compared: The 2026 Guide</h3>
@@ -1054,40 +1054,40 @@ footer a:hover { color: var(--gold); }
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="logo">Portago<span>.</span></div>
+      <a href="index.html" class="logo">Portago<span>.</span></a>
       <p>The definitive lifestyle directory for Mallorca. Curated for discerning residents and visitors who expect more from island living.</p>
     </div>
     <div>
       <h4>Discover</h4>
       <ul>
-        <li><a href="#">Restaurants</a></li>
-        <li><a href="#">Property</a></li>
-        <li><a href="#">Wellness</a></li>
-        <li><a href="#">Architecture</a></li>
-        <li><a href="#">Schools</a></li>
-        <li><a href="#">Marinas</a></li>
+        <li><a href="category-page.html">Restaurants</a></li>
+        <li><a href="search-results.html?q=property">Property</a></li>
+        <li><a href="category-page.html">Wellness</a></li>
+        <li><a href="category-page.html">Architecture</a></li>
+        <li><a href="category-page.html">Schools</a></li>
+        <li><a href="category-page.html">Marinas</a></li>
       </ul>
     </div>
     <div>
       <h4>Areas</h4>
       <ul>
-        <li><a href="#">Palma</a></li>
-        <li><a href="#">Deià</a></li>
-        <li><a href="#">Sóller</a></li>
-        <li><a href="#">Pollença</a></li>
-        <li><a href="#">Alaró</a></li>
-        <li><a href="#">All Areas →</a></li>
+        <li><a href="area-guide.html">Palma</a></li>
+        <li><a href="area-guide.html">Deià</a></li>
+        <li><a href="area-guide.html">Sóller</a></li>
+        <li><a href="area-guide.html">Pollença</a></li>
+        <li><a href="area-guide.html">Alaró</a></li>
+        <li><a href="area-guide.html">All Areas →</a></li>
       </ul>
     </div>
     <div>
       <h4>Company</h4>
       <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">AI Concierge</a></li>
-        <li><a href="#">List Your Business</a></li>
-        <li><a href="#">Advertise</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="index.html">About</a></li>
+        <li><a href="blog-post.html">Blog</a></li>
+        <li><a href="ai-concierge.html">AI Concierge</a></li>
+        <li><a href="listing-page.html">List Your Business</a></li>
+        <li><a href="listing-page.html">Advertise</a></li>
+        <li><a href="ai-concierge.html">Contact</a></li>
       </ul>
     </div>
   </div>
